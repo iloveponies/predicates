@@ -10,7 +10,7 @@
   #(== n %))
 
 (defn set->predicate [a-set]
-  :-)
+  #(contains? a-set %))
 
 (defn pred-and [pred1 pred2]
   :-)
