@@ -4,8 +4,7 @@
   (+ (f x) (g x)))
 
 (defn less-than [n]
-  (fn [k]
-    (< k n)))
+  #(< % n))
 
 (defn equal-to [n]
   :-)
