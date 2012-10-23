@@ -7,7 +7,7 @@
   #(< % n))
 
 (defn equal-to [n]
-  :-)
+  #(== n %))
 
 (defn set->predicate [a-set]
   :-)
