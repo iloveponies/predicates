@@ -31,7 +31,7 @@
   (every? #(has-award? book %) awards))
 
 (defn my-some [pred a-seq]
-  :-)
+  (first (filter #(= true %) (map pred a-seq))))
 
 (defn my-every? [pred a-seq]
   :-)
