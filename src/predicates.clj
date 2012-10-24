@@ -13,7 +13,7 @@
   #(contains? a-set %))
 
 (defn pred-and [pred1 pred2]
-  :-)
+  #(and (pred1 %) (pred2 %)))
 
 (defn pred-or [pred1 pred2]
   :-)
