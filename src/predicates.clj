@@ -16,7 +16,7 @@
   #(and (pred1 %) (pred2 %)))
 
 (defn pred-or [pred1 pred2]
-  :-)
+  #(or (pred1 %) (pred2 %)))
 
 (defn whitespace? [character]
   (Character/isWhitespace character))
