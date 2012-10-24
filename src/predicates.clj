@@ -29,16 +29,19 @@
     false))
 
 (defn has-award? [book award]
-  )
+  (let[check? (fn [x] (= x award))]
+	(< 0 (count(filter check? (:awards book))))))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  )
+  (let[check? (fn[x] (has-award? book x))]
+    (every? check? awards)))
 
 (defn my-some [pred a-seq]
-  :-)
+  (some pred a-seq))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (every? pred a-seq))
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [x] (= 0 (mod n x)))]
+    (not (some pred (range 2 n)))))
