@@ -37,5 +37,5 @@
   (empty? (filter #(= false %) (map pred a-seq))))
 
 (defn prime? [n]
-  :-)
+  (not (some #(== 0 (mod n %)) (range 2 n))))
 ;^^
