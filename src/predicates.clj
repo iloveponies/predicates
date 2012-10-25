@@ -39,7 +39,7 @@
  
 
 (defn prime? [n]
-  (let [pred (fn [x] (== 1 (/ n x)))]
+  (let [pred (fn [x] (or (== n (/ n x)) (== 1 (/ n x))))]
     (not (some pred (range 2 n)))))
 
 
