@@ -33,14 +33,14 @@
     (every? functior awards)))
 
 (defn my-some [pred a-seq]
-  (let [f (fn [x] (pred x))]
-    (if (every? f a-seq)
-      true
-      nil)))
+  (let [f (fn [x] (filter pred x))]
+    (if (empty? (f a-seq))
+      nil
+      true)))
 
 (defn my-every? [pred a-seq]
-  (let [f (fn [x] (pred x))]
-     (complement (empty? (f a-seq)))))
+  (let [f (fn [x] (filter pred x))]
+    (== (count a-seq) (count (f a-seq)))))
 
 (defn prime? [n]
   (let [pred (fn [x] (= 0 (mod n x)))]
