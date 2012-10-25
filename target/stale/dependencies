@@ -1,0 +1,1 @@
+([:dependencies [[midje "1.4.0"] [com.stuartsierra/lazytest "1.2.3"] [org.clojure/clojure "1.4.0"] [lein-light "0.0.11"] [ibdknox/clojure "1.5.0-ibdknox5"]]])
