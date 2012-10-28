@@ -1,19 +1,42 @@
 (ns predicates)
 
-(defn sum-f [f g x]
-  :-)
+; Harjoitus 1
+; OK
+(defn sum-f
+        [f g x]
+        (+ (f x) (g x))
+)
 
-(defn less-than [n]
-  :-)
+; Harjoitus 2a
+; OK
+(defn less-than
+        [n]
+        (fn [k] (< k n))
+)
 
-(defn equal-to [n]
-  :-)
+; Harjoitus 2b
+; OK
+(defn equal-to
+        [n]
+        (fn [k] (== k n))
+)
 
-(defn set->predicate [a-set]
-  :-)
+; Harjoitus 3
+(defn set->predicate
+        [a-set]
+        (let apuri [(fn [a-map] (contains? a-map a-set))]
+         (fn [x] (contains? x a-set))
+        )
+)
 
-(defn pred-and [pred1 pred2]
-  :-)
+; Harjoitus 4
+(defn pred-and
+        [pred1 pred2]
+        (let apuri [(fn [x] (= x true))]
+                (and (= (apuri pred1) true ) (= (apuri pred2) true))
+        )
+)
+
 
 (defn pred-or [pred1 pred2]
   :-)
