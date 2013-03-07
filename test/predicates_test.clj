@@ -70,10 +70,13 @@
 (facts "my-some"
   (my-some even? [1 3 5 7])       => falsey
   (my-some even? [1 3 5 7 8])     => true
-  (my-some neg? [1 3 5 7 8])      => falsey
   (my-some neg? [1 3 5 0 7 8])    => falsey
   (my-some neg? [1 3 5 0 7 -1 8]) => true
-  (my-some neg? [])               => falsey)
+  (my-some neg? [])               => falsey
+  (my-some first [[false] [1]])   => 1
+  (my-some first [[false] []])    => falsey
+  (my-some nil? [1 2])            => falsey
+  (my-some nil? [1 nil 2])        => true)
 
 (facts "my-every?"
   (my-every? pos? [1 2 3 4])   => true
