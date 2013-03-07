@@ -62,10 +62,18 @@
   (has-award? scanner-darkly :hugo)  => false)
 
 (facts "HAS-ALL-THE-AWARDS?"
-  (HAS-ALL-THE-AWARDS? cities awards)          => true
-  (HAS-ALL-THE-AWARDS? lord-of-light awards)   => false
-  (HAS-ALL-THE-AWARDS? lord-of-light #{:hugo}) => true
-  (HAS-ALL-THE-AWARDS? scanner-darkly #{})     => true)
+  (HAS-ALL-THE-AWARDS? cities #{:locus})
+  => true
+  (HAS-ALL-THE-AWARDS? cities #{:locus :world-fantasy :hugo})
+  => true
+  (HAS-ALL-THE-AWARDS? cities #{:locus :world-fantasy :hugo :pulitzer})
+  => false
+  (HAS-ALL-THE-AWARDS? lord-of-light #{:locus :world-fantasy :hugo})
+  => false
+  (HAS-ALL-THE-AWARDS? lord-of-light #{:hugo})
+  => true
+  (HAS-ALL-THE-AWARDS? scanner-darkly #{})
+  => true)
 
 (facts "my-some"
   (my-some even? [1 3 5 7])       => falsey
