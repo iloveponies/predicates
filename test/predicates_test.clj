@@ -2,24 +2,29 @@
   (:use predicates
         midje.sweet))
 
-(facts "1 sum-f"
+(facts "sum-f" {:exercise 1
+                :points 1}
   (sum-f inc dec 4)      => 8
   (sum-f inc identity 5) => 11
   (sum-f identity - 10)  => 0)
 
-(facts "2 less-than"
-  (filter (less-than 3) [1 2 3 4 5])   => [1 2]
-  (filter (less-than 4) [-2 12 3 4 0]) => [-2 3 0])
+(facts {:exercise 2
+        :points 1}
+  (facts "less-than" 
+    (filter (less-than 3) [1 2 3 4 5])   => [1 2]
+    (filter (less-than 4) [-2 12 3 4 0]) => [-2 3 0])
 
-(facts "2 equal-to"
-  (filter (equal-to 2) [2 1 3 2.0]) => [2 2.0]
-  (filter (equal-to 2) [3 4 5 6])   => [])
+  (facts "equal-to"
+    (filter (equal-to 2) [2 1 3 2.0]) => [2 2.0]
+    (filter (equal-to 2) [3 4 5 6])   => []))
 
-(facts "3 set->predicate"
+(facts "set->predicate" {:exercise 3
+                         :points 1}
   (filter (set->predicate #{1 2 3})     [0 2 4 6])       => [2]
   (filter (set->predicate #{1 2 3 nil}) [2 nil 4 nil 6]) => [2 nil nil])
 
-(facts "4 pred-and"
+(facts "pred-and" {:exercise 4
+                   :points 1}
   (filter (pred-and pos? even?) [1 2 -4 0 6 7 -3])
   => [2 6]
   (filter (pred-and pos? odd?) [1 2 -4 0 6 7 -3])
@@ -27,11 +32,13 @@
   (filter (pred-and (complement nil?) empty?) [[] '() nil {} #{}])
   => [[] '() {} #{}])
 
-(facts "5 pred-or"
+(facts "pred-or" {:exercise 5
+                  :points 1}
   (filter (pred-or pos? odd?) [1 2 -4 0 6 7 -3])  => [1 2 6 7 -3]
   (filter (pred-or pos? even?) [1 2 -4 0 6 7 -3]) => [1 2 -4 0 6 7])
 
-(facts "6 blank?"
+(facts "blank?" {:exercise 6
+                 :points 1}
   (blank? " \t\n\t ") => true
   (blank? "  \t a")   => false
   (blank? "")         => true)
@@ -60,11 +67,13 @@
 (def books #{cities, wild-seed, lord-of-light,
              deus-irae, ysabel, scanner-darkly})
 
-(facts "7 has-award?"
+(facts "has-award?" {:exercise 7
+                     :points 1}
   (has-award? ysabel :world-fantasy) => true
   (has-award? scanner-darkly :hugo)  => false)
 
-(facts "8 HAS-ALL-THE-AWARDS?"
+(facts "HAS-ALL-THE-AWARDS?" {:exercise 8
+                              :points 1}
   (HAS-ALL-THE-AWARDS? cities #{:locus})
   => true
   (HAS-ALL-THE-AWARDS? cities #{:locus :world-fantasy :hugo})
@@ -78,7 +87,8 @@
   (HAS-ALL-THE-AWARDS? scanner-darkly #{})
   => true)
 
-(facts "9 my-some"
+(facts "my-some" {:exercise 9
+                  :points 1}
   (my-some even? [1 3 5 7])       => falsey
   (my-some even? [1 3 5 7 8])     => true
   (my-some neg? [1 3 5 0 7 8])    => falsey
@@ -89,13 +99,15 @@
   (my-some nil? [1 2])            => falsey
   (my-some nil? [1 nil 2])        => true)
 
-(facts "10 my-every?"
+(facts "my-every?" {:exercise 10
+                    :points 1}
   (my-every? pos? [1 2 3 4])   => true
   (my-every? pos? [1 2 3 4 0]) => false
   (my-every? even? [2 4 6])    => true
   (my-every? even? [])         => true)
 
-(facts "11 prime?"
+(facts "prime?" {:exercise 11
+                 :points 1}
   (prime? 4)                   => false
   (prime? 7)                   => true
   (prime? 10)                   => false
