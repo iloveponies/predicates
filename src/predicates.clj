@@ -1,28 +1,30 @@
 (ns predicates)
 
 (defn sum-f [f g x]
-  :-)
+  (+ (f x) (g x)))
 
 (defn less-than [n]
-  :-)
+  (fn [a] (< a n)))
 
 (defn equal-to [n]
-  :-)
+  (fn [a] (== a n)))
 
 (defn set->predicate [a-set]
-  :-)
+  (fn [x] (contains? a-set x)))
 
 (defn pred-and [pred1 pred2]
-  :-)
+  (fn [x] (and (pred1 x) (pred2 x))))
 
 (defn pred-or [pred1 pred2]
-  :-)
+  (fn [x] (or (pred1 x) (pred2 x))))
 
 (defn whitespace? [character]
   (Character/isWhitespace character))
 
-(defn blank? [string]
-  :-)
+(defn blank?
+  "Checks whether string is empty, nil or contains whitespace"
+  [string]
+  (every? (pred-or whitespace? nil?) string))
 
 (defn has-award? [book award]
   :-)
