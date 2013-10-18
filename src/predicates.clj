@@ -27,10 +27,10 @@
   (every? (pred-or whitespace? nil?) string))
 
 (defn has-award? [book award]
-  :-)
+  (contains? (:awards book) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (every? (fn [award] (has-award? book award)) (:awards book)))
 
 (defn my-some [pred a-seq]
   :-)
