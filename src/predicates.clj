@@ -33,11 +33,12 @@
   (every? (fn [award] (has-award? book award)) (:awards book)))
 
 (defn my-some [pred a-seq]
-  :-)
+  (not (empty? (filter pred a-seq))))
 
 (defn my-every? [pred a-seq]
   :-)
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [x] (== 0 (mod n x)))]
+    (not (some pred (range 2 n)))))
 ;^^
