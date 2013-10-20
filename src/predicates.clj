@@ -31,7 +31,8 @@
   (every? (fn [award] (has-award? book award)) awards))
 
 (defn my-some [pred a-seq]
-  (not (empty? (filter pred a-seq))))
+  (and (not-empty (filter pred a-seq))
+     (pred (first (filter pred a-seq)))))
 
 (defn my-every? [pred a-seq]
   (empty? (filter (complement pred) a-seq)))
