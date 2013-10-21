@@ -13,29 +13,33 @@
   (fn [key] (contains? a-set key)))
 
 (defn pred-and [pred1 pred2]
-  :-)
+  (fn [x] (and (pred1 x) (pred2 x))))
 
 (defn pred-or [pred1 pred2]
-  :-)
+  (fn [x] (or (pred1 x) (pred2 x))))
 
 (defn whitespace? [character]
   (Character/isWhitespace character))
 
 (defn blank? [string]
-  :-)
+  (every? whitespace? string))
 
 (defn has-award? [book award]
-  :-)
+  (contains? (get book :awards) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (let [award? (fn[x] (has-award? book x))]
+    (every? award? awards)))
 
 (defn my-some [pred a-seq]
-  :-)
+  (let [result (some pred a-seq)]
+    (if (nil? result) false result)))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (let [result (every? pred a-seq)]
+    (if (nil? result) false result)))
 
 (defn prime? [n]
-  :-)
+  (let [divisible? (fn[x] (== 0 (unchecked-remainder-int n x)))]
+    (not (some divisible? (range 2 n)))))
 ;^^
