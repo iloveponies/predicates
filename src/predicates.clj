@@ -43,6 +43,6 @@
                        (> (* p p) n)   true
                        (= (mod n p) 0) false
                        :else           (recur n (rest ps)))))]
-    (divides n (conj (range 3 300 2) 2))))
+    (divides n (conj (range 3 n 2) 2))))
 
 ;^^
