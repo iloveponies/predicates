@@ -31,12 +31,20 @@
   (every? (fn[award](has-award? book award)) awards))
 
 (defn my-some [pred a-seq]
-  (not (empty? (filter pred a-seq)))) ;Todo: Not the solution.
+  (let [first-item (get (vec (filter pred a-seq)) 0 false)]
+    (if(= first-item false)
+      false
+      (pred first-item))))
 
 (defn my-every? [pred a-seq]
-  :-)
+ (empty? (filter (complement pred) a-seq)))
 
 (defn prime? [n]
-  :-)
+  (let [is-divisible? (fn[x] (== 0 (mod n x)))]
+    (not (some is-divisible? (range 2 n)))))
 ;^^
+
+
+
+
 
