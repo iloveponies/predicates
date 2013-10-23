@@ -33,13 +33,18 @@
   (every? (fn [award] (has-award? book award)) awards))
 
 (defn my-some [pred a-seq]
-  (some pred a-seq))
+  (let [first-item (get (vec (filter pred a-seq)) 0 false)]
+    (if (= first-item false)
+      false
+      (pred first-item))))
 
 (defn my-every? [pred a-seq]
-  (every? pred a-seq))
+  (empty? (filter (complement pred) a-seq)))
 
 (defn prime? [n]
   (let [divisible? (fn [elem] (== 0 (mod n elem)))]
     (not (some divisible? (range 2 n)))))
 ;^^
+
+
 
