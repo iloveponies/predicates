@@ -30,21 +30,22 @@
   (contains? (:awards book) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  (every? true? (map
-                 (partial has-award? book)
-                 awards)))
+  (let [book-has-award? (partial has-award? book)]
+    (every? true? (map book-has-award? awards))))
 
 (defn my-some [pred a-seq]
-  (first (filter
-          (complement false?)
-          (map pred a-seq))))
+  (let [truthy? (complement false?)]
+    (first (filter truthy? (map pred a-seq)))))
 
 (defn my-every? [pred a-seq]
-  (not (my-some (complement pred) a-seq)))
+  (let [not-pred? (complement pred)]
+    (not (my-some not-pred? a-seq))))
 
 (defn prime? [n]
-  (let [divides? (fn [x y] (= (mod x y) 0))]
-    (not (some (partial divides? n) (range 2 n)))))
+  (let [divides? (fn [x y] (= (mod x y) 0))
+        divides-n? (partial divides? n)]
+    (not (my-some divides-n? (range 2 n)))))
+
 ;^^
 
 
