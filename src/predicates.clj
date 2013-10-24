@@ -21,24 +21,29 @@
 (defn whitespace? [character]
   (Character/isWhitespace character))
 
-(defn blank?
-  "Checks whether string is empty, nil or contains whitespace"
-  [string]
+(defn blank? [string]
   (every? (pred-or whitespace? nil?) string))
 
 (defn has-award? [book award]
   (contains? (:awards book) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  (every? (fn [award] (has-award? book award)) (:awards book)))
+  (every? (:awards book) awards))
+  ;; Code below will not work.
+  ;; (every? (fn [award] (has-award? book award)) (:awards book)))
 
 (defn my-some [pred a-seq]
-  (not (empty? (filter pred a-seq))))
+  (let [filtered (filter pred a-seq)
+        eka (first filtered)]
+    (cond
+      (empty? filtered) false
+      :else (pred eka))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (let [filtered (filter pred a-seq)]
+    (apply == (map count [a-seq filtered]))))
 
 (defn prime? [n]
   (let [pred (fn [x] (== 0 (mod n x)))]
     (not (some pred (range 2 n)))))
-;^^
+
