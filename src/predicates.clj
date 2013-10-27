@@ -33,7 +33,8 @@
   (contains? (:awards book) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (or (= (set(map (fn [x](has-award? book x)) awards)) #{true})
+      (= (set(map (fn [x](has-award? book x)) awards)) #{})))
 
 (defn my-some [pred a-seq]
   (if (empty? a-seq)
@@ -50,5 +51,6 @@
       false)))
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [x](= (mod n x) 0))]
+    (not (some pred (range 2 n)))))
 ;^^
