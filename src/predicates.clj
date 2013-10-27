@@ -38,18 +38,29 @@
 )
 
 (defn has-award? [book award]
-  :-)
+  (contains? (:awards book) award)
+)
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (every? (fn [award] (has-award? book award)) awards)
+)
+
 
 (defn my-some [pred a-seq]
-  :-)
+  (first
+     (filter (fn [x] x) (map pred a-seq))
+  )
+)
+
 
 (defn my-every? [pred a-seq]
-  :-)
+  (empty?
+    (filter (complement pred) a-seq)
+  )
+)
 
 (defn prime? [n]
-  :-)
+
+)
 ;^^
 
