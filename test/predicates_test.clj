@@ -96,6 +96,19 @@
   (my-some neg? [])               => falsey
   (my-some first [[false] [1]])   => 1
   (my-some first [[false] []])    => falsey
+
+  ;; should fail with
+  ;; (first (filter identity (set (map pred a-seq))))
+  (my-some identity ["abc" "bca"]) => "abc"
+
+  ;; should fail with
+  ;; (first (filter (complement nil?) (map pred a-seq)))
+  (let [foo (fn [x] (cond (and (zero? (mod x 2))
+                               (not (zero? (mod x 4)))) false
+                          (zero? (mod x 4)) nil
+                          :else x))]
+    (my-some foo [16 18 1239 20 22 24]) => 1239)
+
   (my-some nil? [1 2])            => falsey
   (my-some nil? [1 nil 2])        => true)
 
@@ -104,7 +117,9 @@
   (my-every? pos? [1 2 3 4])   => true
   (my-every? pos? [1 2 3 4 0]) => false
   (my-every? even? [2 4 6])    => true
-  (my-every? even? [])         => true)
+  (my-every? even? [])         => true
+  (my-every? identity [1 2 nil]) => false
+  (my-every? identity [1 2 false]) => false)
 
 (facts "prime?" {:exercise 11
                  :points 1}
