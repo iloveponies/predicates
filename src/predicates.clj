@@ -13,19 +13,29 @@
 )
 
 (defn set->predicate [a-set]
-  :-)
+  (fn [a-map] (contains? a-set a-map))
+)
 
 (defn pred-and [pred1 pred2]
-  :-)
+  (fn [x] (and (pred1 x) (pred2 x)))
+)
 
 (defn pred-or [pred1 pred2]
-  :-)
+  (fn [x] (or (pred1 x) (pred2 x)))
+)
 
 (defn whitespace? [character]
   (Character/isWhitespace character))
 
 (defn blank? [string]
-  :-)
+  (if (empty? string)
+    true
+    (if (every? whitespace? string)
+      true
+      false
+    )
+  )
+)
 
 (defn has-award? [book award]
   :-)
