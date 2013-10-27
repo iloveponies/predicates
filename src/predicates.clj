@@ -28,14 +28,14 @@
   (contains? (:awards book) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  (every? has-award? (book awards)))
+  (every? (fn [x] (has-award? book x)) awards))
 
 (defn my-some [pred a-seq]
-  :-)
+ (some identity (map pred a-seq)))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (not(my-some (complement pred) a-seq)))
 
 (defn prime? [n]
-  :-)
+   )
 ;^^
