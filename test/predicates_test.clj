@@ -87,19 +87,40 @@
   (HAS-ALL-THE-AWARDS? scanner-darkly #{})
   => true)
 
+(defn my-nil? [x]
+  )
+
 (facts "my-some" {:exercise 9
                   :points 1}
-  (my-some even? [1 3 5 7])       => falsey
+  (my-some even? [1 3 5 7])       => nil
   (my-some even? [1 3 5 7 8])     => true
-  (my-some neg? [1 3 5 0 7 8])    => falsey
+  (my-some neg? [1 3 5 0 7 8])    => nil
   (my-some neg? [1 3 5 0 7 -1 8]) => true
-  (my-some neg? [])               => falsey
+  (my-some neg? [])               => nil
   (my-some first [[false] [1]])   => 1
-  (my-some first [[false] []])    => falsey
+  (my-some first [[false] []])    => nil
+
+  (facts "should work when the predicate returns a truthy value other than true for nil"
+        (my-some #(if (nil? x) "true" nil) [nil 1 2 3]) => "true"
+        (my-some #(if (nil? x) "so true" nil) [nil 1 2 3]) => "so true")
+
+  (facts "should work when the predicate returns a truthy value other the true for false"
+        (my-some #(if (false? %) "very truthy" nil) [false nil 1 2 3])
+          => "very truthy"
+        (my-some #(if (false? %) "truthy" nil) [false nil 1 2 3]) => "truthy")
+
+  (facts "should work when the predicate returns nil as a falsey value"
+         (my-some #(if (= 1 %) nil true) [1 0 2]) => true
+         (my-some #(if (= 1 %) nil true) [0 2]) => nil)
+
+  (facts "should work when given a sequence of sequences"
+         (my-some empty? [["a" "b" 3 4] []] => true)
+         (my-some empty? [["A"] ["B"]]) => nil)
 
   ;; should fail with
   ;; (first (filter identity (set (map pred a-seq))))
   (my-some identity ["abc" "bca"]) => "abc"
+  (my-some identity ["bca" "abc"]) => "bca"
 
   ;; should fail with
   ;; (first (filter (complement nil?) (map pred a-seq)))
@@ -118,8 +139,20 @@
   (my-every? pos? [1 2 3 4 0]) => false
   (my-every? even? [2 4 6])    => true
   (my-every? even? [])         => true
+  (my-every? identity [1 2 3]) => true
   (my-every? identity [1 2 nil]) => false
-  (my-every? identity [1 2 false]) => false)
+  (my-every? identity [1 2 false]) => false
+
+  (facts "should work when predicate returns truthy values other than true"
+         (my-every? first [["a"] [1] [:D]]) => true
+         (my-every? first [["a"] [] [:D]]) => false)
+  (facts "should work when predicate returns truthy values for falsey params"
+         (my-every? #(if (nil? %) "true" nil) [nil nil nil]) => true
+         (my-every? #(if (false? %) ":)" nil) [false false false]) => true
+         (my-every? false? [false]) => true
+         (my-every? false? []) => false
+         (my-every? false? [false nil] => false)
+       )
 
 (facts "prime?" {:exercise 11
                  :points 1}
