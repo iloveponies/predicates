@@ -34,10 +34,9 @@
 
 (defn my-some [pred a-seq]
   (let [cut (filter pred a-seq)]
-    (cond
-     (and (= pred first) (not= (count cut) 0)) (first (first cut))
-     (not= (count cut) 0) true
-     :else false)))
+    (if (empty? cut)
+      false
+      (first (map pred cut)))))
 
 (defn my-every? [pred a-seq]
   (let [cut (filter pred a-seq)]
@@ -47,6 +46,6 @@
      :else false)))
 
 (defn prime? [n]
-  (let [divisible? (fn [x] (if (= (mod n x) 0) true false))]
+  (let [divisible? (fn [x] (= (mod n x) 0))]
     (not (some divisible? (range 2 n)))))
 ;^^
