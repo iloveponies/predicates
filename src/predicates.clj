@@ -36,13 +36,16 @@
   (every? (h-a? book) awards))
 
 (defn my-some [pred a-seq]
-  (if (= (some pred a-seq) nil) false (some pred a-seq)))
+  (first (filter (complement false?) (map pred a-seq))))
+
 
 (defn my-every? [pred a-seq]
-  (every? pred a-seq))
+  (== (count (filter pred a-seq)) (count a-seq)))
 
 (defn prime? [n]
   (let [pred (fn [x] (== 0 (mod n x)))]
     (not (some pred (range 2 n)))))
 ;^^
+
+
 
