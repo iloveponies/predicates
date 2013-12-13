@@ -31,7 +31,8 @@
   (every? (fn [a] (has-award? book a)) awards))
 
 (defn my-some [pred a-seq]
-  (not (empty? (filter pred a-seq))))
+  (let [fs (filter pred a-seq)]
+    (if (empty? fs) false (pred (first fs)))))
 
 (defn my-every? [pred a-seq]
   (= (filter pred a-seq) a-seq))
@@ -40,4 +41,5 @@
   (let [pred (range 2 n)
         divides? (fn [x] (= (mod n x) 0))]
     (empty? (filter divides? pred))))
-;^^
+
+  ;^^
