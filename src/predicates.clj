@@ -22,19 +22,24 @@
   (Character/isWhitespace character))
 
 (defn blank? [string]
-  :-)
+  (every? whitespace? string))
 
 (defn has-award? [book award]
-  :-)
+  (contains? (:awards book) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (every? (fn [award] (has-award? book award)) awards))
 
+;; Helkutin ruma mutta näyttää toimivan oikein
 (defn my-some [pred a-seq]
-  :-)
+  (let [found (filter pred a-seq)]
+    (if (not-empty found)
+      (pred (first found))
+      nil)))
 
+;; Mutta toimivalla my-somella tämä on kait ok:
 (defn my-every? [pred a-seq]
-  :-)
+  (not (my-some (complement pred) a-seq)))
 
 (defn prime? [n]
   :-)
