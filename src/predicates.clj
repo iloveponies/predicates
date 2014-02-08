@@ -33,13 +33,11 @@
   (every? #(has-award? book %) awards))
 
 (defn my-some [pred a-seq]
-  (first (filter #(and ((complement false?) %)
-                       ((complement nil?) %))
+  (first (filter #(when (= true (boolean %)) %)
                  (map pred a-seq))))
 
 (defn my-every? [pred a-seq]
-  (empty? (filter #(or (false? %)
-                       (nil? %))
+  (empty? (filter #(= false (boolean %))
                   (map pred a-seq))))
 
 (defn prime? [n]
