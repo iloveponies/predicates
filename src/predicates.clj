@@ -32,11 +32,12 @@
     (every? has-book-award? awards)))
 
 (defn my-some [pred a-seq]
-  :-)
+  (first (map pred (filter pred a-seq))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (empty? (filter (complement pred) a-seq)))
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [x] (= (rem n x) 0))]
+    (not (some pred (range 2 n)))))
 ;^^
