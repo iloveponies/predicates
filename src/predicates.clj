@@ -35,9 +35,7 @@
 (defn HAS-ALL-THE-AWARDS? [book awards]
   (let [func (fn [x] (has-award? book x))
         awards-got (map func awards)]
-;   (every? identity '(map func awards))))
-;   (empty? (filter true? '(map func awards)))))
-    (not (some false? awards-got))))
+    (every? identity awards-got)))
 
 (defn my-some [pred a-seq]
   (first (filter boolean (map pred a-seq))))
