@@ -104,20 +104,14 @@
 
 
 
-(defn prime? [n]
   (defn prime? [n]
-  (let [divides (fn [x]
-               (== 0 (mod n x))) ]
-    (not (some divides (range 2 n))))))
+  (let [divides? (fn [x]
+               (= 0 (mod n x)))]
+    (not (some divides? (range 2 n)))))
 
 
 
-;^^
-
-
-
-
-
+;
 
 
 
