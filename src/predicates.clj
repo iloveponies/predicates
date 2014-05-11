@@ -24,10 +24,6 @@
 (defn blank? [string]
   (every? whitespace? string))
 
-(blank? " \t\n\t ") ;=> true
-(blank? "  \t a")   ;=> false
-(blank? "")         ;=> true
-
 (defn has-award? [book award]
   (contains? (:awards book) award))
 
