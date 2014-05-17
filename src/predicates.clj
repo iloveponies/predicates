@@ -166,10 +166,15 @@
 ;;
 ;; (pred a-seq) -> first value being non-nil
 (defn my-some [pred a-seq]
-  (let [res-flt (filter pred a-seq)]
-    (if (empty? res-flt)
-      false
-      (first res-flt))))
+  ;; apply predicate on all
+  (let [res-map       (map pred a-seq)
+        ;; Get non-false elements
+        non-false-elt (filter identity res-map)]
+    ;;
+    ;; if not empty return the first element, otherwise false
+    (if (not (empty? non-false-elt))
+      (first non-false-elt)
+      false)))
 ;;
 ;; (my-some even? [1 3 5 7])       ;=> falsey
 ;; (my-some even? [1 3 5 7 8])     ;=> true
