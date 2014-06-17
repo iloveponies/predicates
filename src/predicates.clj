@@ -30,7 +30,7 @@
   (> (count (:awards book)) 0))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  (== (count (:awards book)) (count awards)))
+      (>= (count (:awards book)) (count awards)))
 
 (defn my-some [pred a-seq]
   :-)
