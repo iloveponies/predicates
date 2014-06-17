@@ -13,16 +13,24 @@
   (fn [x] (contains? a-set x)))
 
 (defn pred-and [pred1 pred2]
-  :-)
+  (fn [k] (if (and (pred1 k) (pred2 k))
+    true
+    false)))
 
 (defn pred-or [pred1 pred2]
-  :-)
+  (fn [k] (if (or (pred1 k) (pred2 k))
+    true
+    false)))
 
 (defn whitespace? [character]
   (Character/isWhitespace character))
 
 (defn blank? [string]
-  :-)
+  (if (or (every? whitespace? string)
+          (== string nil)
+          (== (count string) 0))
+    true
+    false))
 
 (defn has-award? [book award]
   :-)
