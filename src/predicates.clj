@@ -27,13 +27,13 @@
 
 (defn blank? [string]
   (if (or (every? whitespace? string)
-          (== string nil)
+          (nil? string)
           (== (count string) 0))
     true
     false))
 
 (defn has-award? [book award]
-  :-)
+  (> (count (:awards book)) 0))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
   :-)
