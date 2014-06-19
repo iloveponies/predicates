@@ -44,5 +44,6 @@
       (count a-seq)))
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [a] (== (rem n a) 0))]
+    (not (some pred (range 2 n)))))
 ;^^
