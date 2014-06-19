@@ -33,10 +33,15 @@
       (>= (count (:awards book)) (count awards)))
 
 (defn my-some [pred a-seq]
-  :-)
+  (let [predicate-seq (map pred a-seq)
+        truthy-values (filter (fn [e] (identity e)) predicate-seq)]
+    (if (> (count truthy-values) 0)
+      (first truthy-values)
+      false)))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (== (count (filter pred a-seq))
+      (count a-seq)))
 
 (defn prime? [n]
   :-)
