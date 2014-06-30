@@ -33,7 +33,7 @@
   (every? #(contains? (:awards book) %) awards))
 
 (defn my-some [pred a-seq]
-  (first (first (filter #(first %) (map (fn [x] [(pred x) x]) a-seq)))))
+  (first (map pred (filter #(pred %) a-seq))))
 
 (defn my-every? [pred a-seq]
   (not (my-some (complement pred) a-seq)))
