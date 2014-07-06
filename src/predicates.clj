@@ -39,7 +39,8 @@
       (pred (first candidates)))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (let [filtered (filter pred a-seq)]
+    (= (count a-seq) (count filtered))))
 
 (defn prime? [n]
   :-)
