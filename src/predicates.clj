@@ -41,6 +41,11 @@
 (defn my-every? [pred a-seq]
   (empty? (filter (complement pred) a-seq)))
 
+(defn divides? [divisor n]
+  (= (mod n divisor) 0))
+
 (defn prime? [n]
-  :-)
+  (let [possible-divisors (range 2 (Math/floor (+ (Math/sqrt n) 1)))
+        divides-n? (fn [x] (divides? x n))]
+    (empty? (filter divides-n? possible-divisors))))
 ;^^
