@@ -34,7 +34,7 @@
   (first (filter boolean (map pred a-seq))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (empty? (filter false? (map pred a-seq))))
 
 (defn prime? [n]
   :-)
