@@ -25,7 +25,7 @@
   (or (= "" string) (= [] string) (= nil string) (every? whitespace? string)))
 
 (defn has-award? [book award]
-  :-)
+  (contains? (get book :awards) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
   :-)
