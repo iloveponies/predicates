@@ -37,5 +37,6 @@
   (empty? (filter false? (map pred a-seq))))
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [x] (= 0 (unchecked-remainder-int n x)))]
+    (not (some pred (range 2 n)))))
 ;^^
