@@ -22,7 +22,7 @@
   (Character/isWhitespace character))
 
 (defn blank? [string]
-  :-)
+  (or (= "" string) (= [] string) (= nil string) (every? whitespace? string)))
 
 (defn has-award? [book award]
   :-)
