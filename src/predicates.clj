@@ -10,7 +10,7 @@
   (fn [x] (== x n)))
 
 (defn set->predicate [a-set]
-  :-)
+  (fn [x] (contains? a-set x)))
 
 (defn pred-and [pred1 pred2]
   :-)
