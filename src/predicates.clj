@@ -50,25 +50,7 @@
   ((complement nil?) (award (:awards book))))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  ;(=
-   ;(awards
-    (:awards book)
-    ;)
-   ;)
-  )
-
-(HAS-ALL-THE-AWARDS? cities #{:locus})
-;=> true
-(HAS-ALL-THE-AWARDS? cities #{:locus :world-fantasy :hugo})
-;=> true
-(HAS-ALL-THE-AWARDS? cities #{:locus :world-fantasy :hugo :pulitzer})
-;=> false
-(HAS-ALL-THE-AWARDS? lord-of-light #{:locus :world-fantasy :hugo})
-;=> false
-(HAS-ALL-THE-AWARDS? lord-of-light #{:hugo})
-;=> true
-(HAS-ALL-THE-AWARDS? scanner-darkly #{})
-;=> true
+  (every? #(has-award? book %) awards))
 
 (defn my-some [pred a-seq]
   :-)
