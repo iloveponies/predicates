@@ -1,13 +1,13 @@
 (ns predicates)
 
 (defn sum-f [f g x]
-  :-)
+  (+ (f x) (g x)))
 
 (defn less-than [n]
-  :-)
+  (fn [k] (> n k)))
 
 (defn equal-to [n]
-  :-)
+  (fn [k] (== n k)))
 
 (defn set->predicate [a-set]
   :-)
