@@ -32,7 +32,7 @@
           (map (fn [x] (has-award? book x)) awards)))
 
 (defn my-some [pred a-seq]
-  :-)
+  (first (filter #(identity %) (map pred a-seq))))
 
 (defn my-every? [pred a-seq]
   :-)
