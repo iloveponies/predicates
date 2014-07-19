@@ -35,7 +35,11 @@
   (first (filter #(identity %) (map pred a-seq))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (let [size (count a-seq)]
+    (if (empty? a-seq) true
+      (= size 
+         (count (filter #(identity %) 
+                        (map pred a-seq)))))))
 
 (defn prime? [n]
   :-)
