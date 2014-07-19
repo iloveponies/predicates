@@ -40,5 +40,9 @@
                     (map pred a-seq)))))
 
 (defn prime? [n]
-  :-)
+  (cond
+    (or (= 1 n) (= 2 n)) true
+    (= 0 (mod n 2)) false
+    :else (let [r (range 3 (+ 1 (Math/sqrt n)))]
+            (every? #(not= 0 (mod n %)) r))))
 ;^^
