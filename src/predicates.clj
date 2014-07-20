@@ -57,7 +57,13 @@
       false)))
 
 (defn my-some [pred a-seq]
-  :-)
+  (let [truthy-vals (filter pred a-seq)
+        pred-val (if (empty? truthy-vals)
+                   nil
+                   (pred (first truthy-vals)))]
+    (if pred-val
+      pred-val
+      nil)))
 
 (defn my-every? [pred a-seq]
   :-)
