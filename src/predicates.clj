@@ -10,7 +10,11 @@
   (fn [k] (== n k)))
 
 (defn set->predicate [a-set]
-  :-)
+  "This function returns a predicate based on the supplied set, a-set."
+  (fn [x]
+    (if (contains? a-set x)
+      true
+      false)))
 
 (defn pred-and [pred1 pred2]
   :-)
