@@ -17,10 +17,20 @@
       false)))
 
 (defn pred-and [pred1 pred2]
-  :-)
+  "This function returns a new predicate that returns true if both
+  pred1 and pred2 are true, otherwise it returns false."
+  (fn [x]
+    (if (and (pred1 x) (pred2 x))
+      true
+      false)))
 
 (defn pred-or [pred1 pred2]
-  :-)
+  "This function returns a new predicate that returns true if either
+  pred1 and pred2 are true, otherwise it returns false."
+  (fn [x]
+    (if (or (pred1 x) (pred2 x))
+      true
+      false)))
 
 (defn whitespace? [character]
   (Character/isWhitespace character))
