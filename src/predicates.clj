@@ -36,13 +36,25 @@
   (Character/isWhitespace character))
 
 (defn blank? [string]
-  :-)
+  "This function takes a string and returns if it is empty, nil, or has only
+  whitespace."
+  (if (or (empty? string) (every? whitespace? string))
+    true
+    false))
 
 (defn has-award? [book award]
-  :-)
+  "This function returns true if the book has won the award."
+  (if (not (empty? (:awards book)))
+    true
+    false))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  "This function returns true if the supplied book has won
+  all awards given."
+  (let [matching-awards (filter (set->predicate awards) (:awards book))]
+    (if (= (count matching-awards) (count awards))
+      true
+      false)))
 
 (defn my-some [pred a-seq]
   :-)
