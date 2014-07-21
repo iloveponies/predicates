@@ -66,7 +66,10 @@
       nil)))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (let [truthy-vals (filter pred a-seq)]
+    (if (= (count truthy-vals) (count a-seq))
+      true
+      false)))
 
 (defn prime? [n]
   :-)
