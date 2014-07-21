@@ -1,16 +1,16 @@
 (ns predicates)
 
 (defn sum-f [f g x]
-  :-)
+  (+ (f x) (g x)))
 
 (defn less-than [n]
-  :-)
+  (fn [k] (< k n)))
 
 (defn equal-to [n]
-  :-)
+  (fn [k] (== k n)))
 
 (defn set->predicate [a-set]
-  :-)
+  (fn [k] (contains? a-set k)))
 
 (defn pred-and [pred1 pred2]
   :-)
@@ -38,4 +38,5 @@
 
 (defn prime? [n]
   :-)
-;^^
+
+
