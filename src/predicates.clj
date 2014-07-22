@@ -33,6 +33,10 @@
   (or (empty? string)
       (every? true? (map whitespace? string))))
 
+(defn blank-better? [string]
+  (or (not string) ;better than (empty? string) ???
+      (every? whitespace? string)))
+
 (defn has-award? [book award]
   (contains? (:awards book) award))
 
@@ -40,6 +44,10 @@
   (every? true?
           (map (fn [award] (has-award? book award))
                awards)))
+
+(defn HAS-ALL-THE-AWARDS-BETTER? [book awards]
+  (every? (fn [award] (has-award? book award))
+          awards))
 
 (defn my-some [pred a-seq]
   (first (filter (complement false?) (map pred a-seq))))
@@ -55,3 +63,4 @@
     (not (some pred (range 2 n)))))
 
 
+()
