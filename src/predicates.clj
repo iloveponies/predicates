@@ -72,5 +72,10 @@
       false)))
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [div]
+               (if (= (mod n div) 0)
+                 true
+                 false))]
+    (not (some pred (range 2 n)))))
+
 ;^^
