@@ -30,7 +30,8 @@
     false))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (let [aw? (fn [x] (has-award? x awards))]
+    (every? aw? book)))
 
 (defn my-some [pred a-seq]
   :-)
