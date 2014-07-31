@@ -32,11 +32,8 @@
   (set/subset? awards (:awards book)))
 
 (defn my-some [pred a-seq]
-  (let [filtered (filter pred a-seq)
-        first-val (first filtered)]
-    (cond (or (number? first-val) 
-              (= filtered '(nil))) true
-          (vector? first-val) (first first-val))))
+  (let [filtered (filter pred a-seq)]
+    (first (map pred filtered))))
 
 (defn my-every? [pred a-seq]
   (== (count a-seq) 
