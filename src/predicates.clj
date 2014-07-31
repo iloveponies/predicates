@@ -40,7 +40,7 @@
       (count (filter pred a-seq))))
 
 (defn prime? [n]
-  (let [pred (fn [p] (= (type (/ n p)) java.lang.Long))]
+  (let [pred (fn [p] (== (mod n p) 0))]
     (not (some pred (range 2 n)))))
 
 ;^^
