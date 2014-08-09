@@ -29,17 +29,19 @@
   (every? whitespace? string))
 
 (defn has-award? [book award]
-  (fn [k] (filter book (set->predicate (:awards book) award))))
+  (let [book-awards (get book :awards #{})]
+    (contains? book-awards award)))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (let [book-awards (get book :awards #{})]
+    (every? book-awards awards)))
 
 (defn my-some [pred a-seq]
-  :-)
+  (first (filter identity (map pred a-seq))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (empty? (filter (complement pred) a-seq)))
 
 (defn prime? [n]
-  :-)
-
+  (let [divides-n? (fn [k] (= 0 (mod n k)))]
+    (not (some divides-n? (range 2 n)))))
