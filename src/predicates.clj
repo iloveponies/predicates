@@ -32,7 +32,9 @@
    :else false))
 
 (defn has-award? [book award]
-  (contains? (:award book) award))
+  (let [ths-award (get book :awards)]
+  ;(println (str book-awards)))
+  (contains? ths-award award)))
 
 ;(defn HAS-ALL-THE-AWARDS? [book awards]
 ;  (every? (fn[x] has-award? book x) awards))
@@ -42,19 +44,24 @@
 
 
 (defn my-some [pred a-seq]
-  (boolean
-  (first (filter pred a-seq)))
-   )
+  (when (seq a-seq)
+   (or (pred (first a-seq))
+        (my-some pred (next  a-seq)))))
+
 
 ;(defn my-some [pred a-seq]
 ;  (boolean (filter pred (map first a-seq))))
 
 (defn my-every? [pred a-seq]
-  (boolean (complement
-  (first (filter pred a-seq)))
-   ))
+  (cond
+   (some #{0} a-seq) false
+   :else (boolean (complement
+  (first (filter pred a-seq))))))
 
 (defn prime? [n]
   (let [pred (fn[x] (== (mod n x)0)) ]
   (not (some pred (range 2 n)))))
 ;^^
+
+
+
