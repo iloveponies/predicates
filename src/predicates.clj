@@ -37,5 +37,6 @@
   (empty? (filter (complement pred) a-seq)))
 
 (defn prime? [n]
-  :-)
+  (let [divides? (fn [x] (zero? (mod n x)))]
+    (not (some divides? (range 2 n)))))
 ;^^
