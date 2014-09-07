@@ -25,13 +25,13 @@
   (every? whitespace? string))
 
 (defn has-award? [book award]
-  (if (award (:awards book)) 
-    true 
+  (if (award (:awards book))
+    true
     false))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  (let [aw? (fn [x] (has-award? x awards))]
-    (every? aw? book)))
+ (every? (fn [award] (has-award? book award)) awards))
+
 
 (defn my-some [pred a-seq]
   :-)
