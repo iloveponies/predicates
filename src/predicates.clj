@@ -40,5 +40,6 @@
   :-)
 
 (defn prime? [n]
-  :-)
+  (let [dziel (fn [x] (= 0 (rem n x)))]
+    (not (some dziel (range 2 n)))))
 ;^^
