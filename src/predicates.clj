@@ -34,10 +34,11 @@
 
 
 (defn my-some [pred a-seq]
-  :-)
+  (let [chek (fn [x] (not (false? x)))]
+    (first(filter chek (map pred a-seq)))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (empty? (filter false? (map pred a-seq))))
 
 (defn prime? [n]
   (let [dziel (fn [x] (= 0 (rem n x)))]
