@@ -33,10 +33,12 @@
 
 
 (defn my-some [pred a-seq]
-  (some pred a-seq))
+  (if (empty? (filter pred a-seq))
+    false
+    (pred (first (filter pred a-seq)))))
 
 (defn my-every? [pred a-seq]
-  (every? pred a-seq))
+  (= (filter pred a-seq) a-seq))
 
 
 (defn prime? [n]
