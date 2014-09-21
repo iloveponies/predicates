@@ -33,11 +33,13 @@
     (every? book-has-award? awards)))
 
 (defn my-some [pred a-seq]
-  :-)
+  (first (filter identity (map pred a-seq))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (= a-seq (filter pred a-seq)))
 
 (defn prime? [n]
-  :-)
+  (let [is-n-divisible-by? (fn [x] (= 0 (mod n x)))]
+    (not (some is-n-divisible-by? (range 2 n)))))
+
 ;^^
