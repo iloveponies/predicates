@@ -22,13 +22,15 @@
   (Character/isWhitespace character))
 
 (defn blank? [string]
-  :-)
+  (every? whitespace? string))
 
 (defn has-award? [book award]
-  :-)
+  (let [book-awards (:awards book)]
+    (boolean (and book-awards (book-awards award)))))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (let [book-has-award? (fn [a] (has-award? book a))]
+    (every? book-has-award? awards)))
 
 (defn my-some [pred a-seq]
   :-)
