@@ -39,7 +39,12 @@
           awards ))
 
 (defn my-some [pred a-seq]
-  (first (filter pred a-seq)))
+  (let [xs (filter pred a-seq)]
+    (if (empty? xs)
+      nil
+      (pred (first xs)))))
+
+
 
 ; map, filter and first
 ; empty? and complement
