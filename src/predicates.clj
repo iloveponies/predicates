@@ -35,13 +35,16 @@
   (contains? (:awards book) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (every? (fn [award] (has-award? book award))
+          awards ))
 
 (defn my-some [pred a-seq]
-  :-)
+  (first (filter pred a-seq)))
 
+; map, filter and first
+; empty? and complement
 (defn my-every? [pred a-seq]
-  :-)
+  (empty? (filter (complement pred) a-seq)))
 
 (defn prime? [n]
   :-)
