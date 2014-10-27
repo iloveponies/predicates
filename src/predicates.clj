@@ -25,17 +25,19 @@
   (every? whitespace? string))
 
 (defn has-award? [book award]
-  :-)
+  (not (nil? (award (:awards book)))))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (every? (set->predicate (:awards book)) awards))
 
 (defn my-some [pred a-seq]
-  :-)
+  (not (empty? (filter pred a-seq))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (empty? (filter #((complement pred) %) a-seq)))
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [x] (= (mod n x) 0))]
+  (not (some pred (range 2 n)))))
+
 ;^^
