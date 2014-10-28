@@ -31,7 +31,7 @@
   (every? (set->predicate (:awards book)) awards))
 
 (defn my-some [pred a-seq]
-  (not (empty? (filter pred a-seq))))
+  (first (filter #(not (false? %)) (map pred a-seq))))
 
 (defn my-every? [pred a-seq]
   (empty? (filter #((complement pred) %) a-seq)))
