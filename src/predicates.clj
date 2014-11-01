@@ -36,8 +36,9 @@
       (pred (first  v)))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (not (contains? (set (map pred a-seq)) false)))
 
 (defn prime? [n]
-  :-)
+  (let [no-goes-into (fn [x] (not= (rem n x) 0))]
+    (every? no-goes-into (range 2 n))))
 ;^^
