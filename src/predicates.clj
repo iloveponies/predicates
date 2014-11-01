@@ -31,7 +31,9 @@
   (every? (fn [a] (has-award? book a)) awards))
 
 (defn my-some [pred a-seq]
-  :-)
+  (let [v (filter pred a-seq)]
+    (if (> (count  v) 0)
+      (pred (first  v)))))
 
 (defn my-every? [pred a-seq]
   :-)
