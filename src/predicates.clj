@@ -51,20 +51,25 @@
   (Character/isWhitespace character))
 
 (defn blank? [string]
-  :-)
+  ((pred-or nil? empty?) (filter (complement whitespace?) string)))
+
 
 (defn has-award? [book award]
-  :-)
+  (contains? (book :awards) award))
+
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (every? (book :awards) awards ))
+
 
 (defn my-some [pred a-seq]
-  :-)
+;  (first (filter pred a-seq)))
+ (when (seq a-seq)
+      (or (pred (first a-seq)) (recur pred (next a-seq)))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (empty? (filter (complement pred) a-seq)))
 
 (defn prime? [n]
-  :-)
-;^^
+  (let [divides? (fn [x] (= 0 (mod n x)))]
+   (not (some divides? (range 2 n)))))
