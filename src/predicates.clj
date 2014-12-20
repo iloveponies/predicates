@@ -54,9 +54,7 @@
   )
 
 (defn prime? [n]
-;   (let [pred pos?]
-; (filter pos? (range 2 n))
-;'    (every? pred (range 2 n)))
-
+(let [pred (fn [x] (== 0 (mod n x)))]
+	 (not (some pred (range 2 n))))
   )
 ;^^
