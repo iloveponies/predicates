@@ -34,11 +34,18 @@
   (every? (book-has-award book) awards))
 
 (defn my-some [pred a-seq]
-  :-)
+  (first (filter boolean (map pred a-seq))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (let [m (map pred a-seq)]
+    (empty? (filter false? m))))
+
+(defn divides? [n]
+  (fn [a] 
+    (= (mod n a) 0)))
 
 (defn prime? [n]
-  :-)
+  (let [pred (divides? n)]
+    (not (some pred (range 2 n)))))
+
 ;^^
