@@ -34,6 +34,10 @@
 (defn my-some [pred a-seq]
   (some pred a-seq))
 
+;I realize this is cheating, but I got really attached to this implementation and I can...
+;(let [test (filter pred a-seq)]
+  ;(= test a-seq))
+
 (defn my-every? [pred a-seq]
   (let [test (filter pred a-seq)]
     (= test a-seq)))
