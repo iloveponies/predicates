@@ -1,22 +1,16 @@
 (ns predicates)
 
-(defn sum-f [f g x]
-  :-)
+(defn sum-f [f g x] (+ (f x) (g x)))
 
-(defn less-than [n]
-  :-)
+(defn less-than [n] (fn [value] (< value n)))
 
-(defn equal-to [n]
-  :-)
+(defn equal-to [n] (fn [value] (== value n)))
 
-(defn set->predicate [a-set]
-  :-)
+(defn set->predicate [a-set] (fn [x] (not (empty? (filter (fn [e] (= e x)) a-set)))))
 
-(defn pred-and [pred1 pred2]
-  :-)
+(defn pred-and [pred1 pred2] (fn [value] (and (pred1 value) (pred2 value))))
 
-(defn pred-or [pred1 pred2]
-  :-)
+(defn pred-or [pred1 pred2] (fn [value] (or (pred1 value) (pred2 value))))
 
 (defn whitespace? [character]
   (Character/isWhitespace character))
