@@ -69,3 +69,279 @@
 (filter (pred-and (complement nil?) empty?) [[] '() nil {} ]
 )
 (filter (pred-or pos? even?) [1 2 -4 0 6 -3])
+(every? pos? [1 2 3])
+(every? pos? [0 1 2 3])
+(every? pos? [])
+(every? pos? nil)
+(every? neg? nil)
+(defn blank? [string]
+  (every? whitespace? string))
+(defn whitespace? [character]
+  (Character/isWhitespace character))
+(defn blank? [string]
+  (every? whitespace? string))
+(blank? " \t\n\t ")
+(blank? "  \t a")
+(blank? "")
+(def china {:name "China Miéville", :birth-year 1972})
+(def octavia {:name "Octavia E. Butler"
+              :birth-year 1947
+              :death-year 2006})
+(def kay {:name "Guy Gavriel Kay" :birth-year 1954})
+(def dick {:name "Philip K. Dick", :birth-year 1928, :death-year 1982})
+(def zelazny {:name "Roger Zelazny", :birth-year 1937, :death-year 1995})
+(def authors #{china, octavia, kay, dick, zelazny})
+(def cities {:title "The City and the City" :authors #{china}
+             :awards #{:locus, :world-fantasy, :hugo}})
+(def wild-seed {:title "Wild Seed", :authors #{octavia}})
+(def lord-of-light {:title "Lord of Light", :authors #{zelazny}
+                    :awards #{:hugo}})
+(def deus-irae {:title "Deus Irae", :authors #{dick, zelazny}})
+(def ysabel {:title "Ysabel", :authors #{kay}, :awards #{:world-fantasy}})
+(def scanner-darkly {:title "A Scanner Darkly" :authors #{dick}})
+(def books #{cities, wild-seed, lord-of-light,
+             deus-irae, ysabel, scanner-darkly}])
+(def china {:name "China Miéville", :birth-year 1972})
+(def octavia {:name "Octavia E. Butler"
+              :birth-year 1947
+              :death-year 2006})
+(def kay {:name "Guy Gavriel Kay" :birth-year 1954})
+(def dick {:name "Philip K. Dick", :birth-year 1928, :death-year 1982})
+(def zelazny {:name "Roger Zelazny", :birth-year 1937, :death-year 1995})
+(def authors #{china, octavia, kay, dick, zelazny})
+(def cities {:title "The City and the City" :authors #{china}
+             :awards #{:locus, :world-fantasy, :hugo}})
+(def wild-seed {:title "Wild Seed", :authors #{octavia}})
+(def lord-of-light {:title "Lord of Light", :authors #{zelazny}
+                    :awards #{:hugo}})
+(def deus-irae {:title "Deus Irae", :authors #{dick, zelazny}})
+(def ysabel {:title "Ysabel", :authors #{kay}, :awards #{:world-fantasy}})
+(def scanner-darkly {:title "A Scanner Darkly" :authors #{dick}})
+(def books #{cities, wild-seed, lord-of-light,
+             deus-irae, ysabel, scanner-darkly})
+(filter :series graphic-novels)
+china
+cities
+(cities :awards)
+(get cities :awards)
+(cities :awards)
+(wild-seed :awards)
+((set->predicate (cities :awards)) :hugo)
+((set->predicate (cities :awards)) :hugoaa)
+((set->predicate (cities :awardsa)) :hugoaa)
+(citiesm :awardsa)
+(cities :awardsa)
+(defn has-award? [book award]
+  ((set->predicate (book :awards)) award)
+)
+(has-award? ysabel :world-fantasy)
+(has-award? scanner-darkly :hugo)
+(contains? nil "a")
+map (contains? "a") "cat")
+(map (contains? "a") "cat")
+(map (contains? "a") [1 2 3 4])
+(map + [1 2 3])
+(map + [1 2 3] [4 5 6])
+(map (has-award? cities) #{:locus})
+(defn HAS-ALL-THE-AWARDS? [book awards]
+  (map (set->predicate (book :awards) award)))
+(defn HAS-ALL-THE-AWARDS? [book awards]
+  (map (set->predicate (book :awards) awards)))
+(HAS-ALL-THE-AWARDS? cities #{:locus})
+(defn HAS-ALL-THE-AWARDS? [book awards]
+  (let [check-book (fn [award] (has-award? book award))]
+    (map check-book awards)))
+(HAS-ALL-THE-AWARDS? cities #{:locus})
+(HAS-ALL-THE-AWARDS? cities #{:locus :world-fantasy :hugo})
+(every (HAS-ALL-THE-AWARDS? cities #{:locus :world-fantasy :hugo}))
+(defn HAS-ALL-THE-AWARDS? [book awards]
+  (let [book-has-award? (fn [award] (has-award? book award))]
+    (every book-has-award? awards)))
+(defn HAS-ALL-THE-AWARDS? [book awards]
+  (let [book-has-award? (fn [award] (has-award? book award))]
+    (every? book-has-award? awards)))
+(HAS-ALL-THE-AWARDS? cities #{:locus :world-fantasy :hugo})
+(HAS-ALL-THE-AWARDS? lord-of-light #{:locus :world-fantasy :hugo})
+(some whitespace? "Kekkonen")
+(some whitespace? "ke ke")
+(some even? [1 2 3])
+(some even? [1 3])
+(some first [[] [1 2] []])
+(some first [[] [false true] []])
+(some nil? [1 nil 2])
+(defn my-some [pred a-seq]
+  (complement(empty? (filter (map pred a-set)))))
+(defn my-some [pred a-seq]
+  (complement(empty? (filter (map pred a-seq)))))
+(my-some even? [1 3 5 7])
+(filter even? [1 2 3])
+(first (filter even? [1 2 3])
+)
+(first (filter even? [1 3]))
+(defn my-some [pred a-seq]
+  (first (filter pred a-seq)))
+(my-some even? [1 3 5 7])
+(boolean nil)
+(my-some even? [1 3 4 7 8])
+(my some nil? [1 2])
+(my-some nil? [1 2])
+(my-some nil? [1 nil 2])
+(filter nil? [1 nil 2])
+(filter nil? [1 1 1])
+(some nil? [1 2])
+(some nil? [1 nil 2])
+(defn my-some [pred a-seq]
+  (first (filter set->predicate a-seq)))
+(my-some nil? [1 nil 2])
+(some nil? [1 nil 2])
+(filter nil? [1 nil 2])
+(empty? (filter nil? [1 nil 2]))
+(complement (empty? (filter nil? [1 nil 2])))
+ (empty? (filter nil? [1 nil 2]))
+(some even? [1 3])
+(some first [[] [1 2] []])
+(map nil? [1 2 3 nil 4])
+first (filter (map nil? [1 2 3 nil 4])
+)
+(map nil? [1 2 3 nil 4])
+(filter nil? [1 2 3 nil 4])
+(defn my-some [pred a-seq]
+  (first (filter pred a-seq)))
+(my-some first [[false] [1]])
+(my-some first [[false] []])
+boolean nil
+(boolean nil)
+(some first [[false] [1]])
+(filter first [[false] [1]])
+(first (filter first [[false] [1]]))
+(first [1 2 3])
+(filter first [[false] [1]])
+(filter (set->predicate #{1 2 3 nil})
+)
+(filter (set->predicate #{1 2 3 nil} [2 nil 4 nil 6)))
+(filter (set->predicate #{1 2 3 nil} [2 nil 4 nil 6]))
+(filter #{1 2 3 nil} [2 nil 4 nil 6])
+(my-some neg? [1 3 5 0 7 -1 8])
+(some neg? [1 3 5 0 7 -1 8])
+(defn my-some [pred a-seq]
+  (> (count (filter pred a-seq)) 0))
+(defn my-some [pred a-seq]
+(defn my-some [pred a-seq]aadsfadsf))))))
+(some neg? [1 3 5 0 7 -1 8])
+(my-some neg? [1 3 5 0 7 -1 8])
+(my-some nil? [1 nil 2])
+(my-some first [[false] [1]])
+(defn my-some [pred a-seq]
+adsf)))))
+(defn my-some [pred a-seq]
+  (first (filter pred a-seq)))
+(my-some nil? [1 nil 2])
+(my-some first? [[false] []])
+(my-some first [[false] []])
+(my-some first [[false] [1]])
+(first (my-some first [[false] [1]]))
+(my-some even? [1 3 5 7 8])
+(map first [[false] [1])
+(map first [[false] [1]])
+(filter first (map first [[false] [1]]))
+(first (map nil? [1 nil 2]))
+(map first [[false] [1]])
+(filter (false 1))
+(filter (map nil? [1 nil 2]) [1 nil 2])
+(filter nil? [1 nil 2])
+(map nil? '(nil))
+(defn my-some [pred a-seq]
+  (first (map pred (filter pred a-seq))))
+(my-some nil? [1 nil 2])
+(my-some first [[false] []])
+(my-some first [[false] [1]])
+(defn my-every? [pred a-seq]
+  (empty? (filter (complement pred) a-seq)))
+(my-every? pos? [1 2 3 4])
+(my-every? pos? [1 2 3 4 0])
+(range 1 10)
+(range 2 1))
+(range 2 10)
+(some even? (range 2 10)
+)
+(divides? 2 10)
+(= 0 (10 % 2))
+(= 0 (% 2 10)))
+(= 0 (% 2 10))
+(mod 2 10)
+(mod 10 2))
+(mod 10 2)
+(mod 11 1)
+(mod 11 2
+)
+(= (mod 11 2))
+(= 0 (mod 11 2))
+(defn prime? [n]
+  (let [divides? (fn [val] (=0 (mod n val)))
+        pred (fn [vals]
+               (map divides? vals))]
+    (not (some pred (range 2 n)))))
+(defn prime? [n]
+  (let [divides? (fn [val] (= 0 (mod n val)))
+        pred (fn [vals]
+               (map divides? vals))]
+    (not (some pred (range 2 n)))))
+(defn divides?
+(=0 (modasdfds)
+))0)))
+(defn divides [n m]
+(= 0 (mod n m)))
+(divides 11 1)
+(divides 11 2)
+(defn prime-candidates [vals]
+)))))
+(prime? 2)
+(prime? 3)
+(prime? 5)
+(prime? 4)
+(prime? 11)
+(mod 11 4)
+(mod 11 5)
+(mod 11 6)
+(mod 11 7)
+(mod 11 10)
+(range 2 11)
+(mod 11 10)
+(defn prime-candidates [n [vals]]
+(let [divides? (fn [val] (= 0 (mod n val)))]
+(map divides? vals)
+)
+(prime-candidates (range 2 10))
+(prime-candidates 10 (range 2 10))
+(prime-candidates 10 (2 3 4 5 6 7 8 9 10))
+(prime-candidates 10 [2 3 4 5 6 7 8 9 10])
+(prime-candidates [10 [2 3 4 5 6 7 8 9 10]])
+(prime-candidates 10 [2 3 4 5 6 7 8 9 10])
+(prime-candidates 10 1)
+(prime-candidates 10 [1])
+(defn divides? [val]
+(= 0 (mod 11 val)))
+(map divides? (range 2 11))
+(defn prime-candidates [vals]
+(map divides? vals))
+(prime-candidates (range 2 11))
+(some (prime-candidates (range 2 11)))
+(prime-candidates (range 2 11))
+(some pos? [1 2 3])
+(defn prime? [n]
+  (let [pred (fn [val] (= 0 (mod n val)))]
+    (not (some pred (range 2 n)))))
+(prime? 11)
+(prime? 10)
+(defn prime? [n]
+  (let [divides? (fn [val] (= 0 (mod n val)))]
+    (not (some divides? (range 2 n)))))
+(prime? 3)
+(prime? 20)
+(prime? 23)
+(prime? 256)
+(prime? 311)
+(prime? 3311)
+(prime? 3313
+)
+(filter prime? (range 2 50))
