@@ -1,7 +1,8 @@
 (ns predicates)
 
 (defn sum-f [f g x]
-  :-)
+  (+ (f x) (g x)))
+
 
 (defn less-than [n]
   :-)
