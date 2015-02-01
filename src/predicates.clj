@@ -35,7 +35,7 @@
   (first (filter (fn [x] x) (map pred a-seq))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (= (filter pred a-seq) a-seq))
 
 (defn prime? [n]
   :-)
