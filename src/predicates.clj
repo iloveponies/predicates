@@ -25,13 +25,13 @@
   (every? whitespace? string))
 
 (defn has-award? [book award]
-  :-)
+  ((set->predicate (:awards book)) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (every? (:awards book) awards))
 
 (defn my-some [pred a-seq]
-  :-)
+  (> (count (filter pred a-seq)) 0))
 
 (defn my-every? [pred a-seq]
   :-)
