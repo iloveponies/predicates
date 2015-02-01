@@ -25,7 +25,8 @@
   (every? whitespace? string))
 
 (defn has-award? [book award]
-  :-)
+  (let [awards (get book :awards)]
+    (contains? awards award)))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
   :-)
