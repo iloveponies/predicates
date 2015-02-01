@@ -38,5 +38,7 @@
   (= (filter pred a-seq) a-seq))
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [x] (= 0 (mod n x)))]
+    (not (some pred (range 2 n)))))
+
 ;^^
