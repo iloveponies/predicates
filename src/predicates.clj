@@ -37,11 +37,9 @@
 
 ;E9
 (defn my-some [pred a-seq]
-  (let [passes (fn [x] (pred x))
-        filtered (filter passes a-seq)]
-     (> (count filtered) 0)))
-
-; WTF (some first [[false] [1]]) ???
+  (if (empty? a-seq)
+    false
+    (or (pred (first a-seq)) (my-some pred (next a-seq)))))
 
 
 ;E10
