@@ -31,11 +31,14 @@
   (every? (set->predicate (:awards book)) awards))
 
 (defn my-some [pred a-seq]
-  :-)
+  (let [mapped (fn [p s] (map p s))]
+    (first (filter (fn [x] (if x x false)) (mapped pred a-seq)))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (let [mapped (fn [p s] (map p s))]
+    (empty? (filter (fn [x] (if x false true)) (mapped pred a-seq)))))
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [x] (== 0 (mod n x)))]
+    (not (some pred (range 2 n)))))
 ;^^
