@@ -28,7 +28,7 @@
   (contains? (:awards book) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-(every? (fn [hatw] (has-award? book hatw)) awards))
+  :-(every? (fn [hasw] (has-award? book hasw)) awards))
 
 (defn my-some [pred a-seq]
   (first (filter identity (map pred a-seq))))
@@ -37,4 +37,6 @@
   (empty? (filter (complement pred) a-seq)))
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [k] (== (mod n k) 0))]
+    (not (some pred (range 2 n))))
+  )
