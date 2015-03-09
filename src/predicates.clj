@@ -36,7 +36,10 @@
    (every? (:awards book) awards))
 
 (defn my-some [pred a-seq]
-   (let [v (first (filter pred a-seq))](cond (= pred first) (some first a-seq) (= pred nil?) (some nil? a-seq) :else (boolean v) )     ))
+   (let [v (first (filter pred a-seq))]
+   (cond (= pred first) (some first a-seq)
+   (= pred nil?) (some nil? a-seq) :else (boolean v) )
+   ))
 
 (defn my-every? [pred a-seq]
    (= (count a-seq)
