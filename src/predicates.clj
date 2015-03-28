@@ -33,9 +33,17 @@
 
 (defn my-some [pred a-seq]
   ;(println a-seq (filter pred a-seq))
-  (not (empty? (filter pred a-seq)) ))
+  ;
+  ; mia soluzione non funzionante
+  ;(not (empty? (filter pred a-seq)) ))
+  ;
+  (first (filter identity (map pred a-seq))))
 
 (defn my-every? [pred a-seq]
+  ;
+  ; altra soluzione
+  ;(empty? (filter (complement pred) a-seq)))
+  ;
   (= (count a-seq) (count (filter pred a-seq))))
 
 (defn prime? [n]
