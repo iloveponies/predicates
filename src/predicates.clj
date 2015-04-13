@@ -44,5 +44,6 @@
       false )))
 
 (defn prime? [n]
-  :-)
+  (let [divisible-by? (fn [x] (= (mod n x) 0))]
+    (not (some divisible-by? (range 2 n)))))
 ;^^
