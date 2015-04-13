@@ -32,10 +32,16 @@
     (every? has-award awards)))
 
 (defn my-some [pred a-seq]
-  :-)
+  (let [filtered (filter pred a-seq)]
+    (if (empty? filtered)
+      nil
+      (pred (first filtered)))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (let [filtered (filter (complement pred) a-seq)]
+    (if (empty? filtered)
+      true
+      false )))
 
 (defn prime? [n]
   :-)
