@@ -31,8 +31,7 @@
   (every? (:awards book) awards))
 
 (defn my-some [pred a-seq]
-  (let [mappa (filter pred a-seq)]
-    mappa))
+  (or (first (filter identity (map pred a-seq))) false))
 
 (defn my-every? [pred a-seq]
   (empty? (filter (complement pred) a-seq)))
