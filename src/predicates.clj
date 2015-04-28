@@ -28,7 +28,9 @@
   (contains? (:awards book) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (if (empty? awards)
+    true
+    (apply = (map (fn [x] (has-award? book x)) awards))))
 
 (defn my-some [pred a-seq]
   :-)
