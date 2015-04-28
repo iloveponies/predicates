@@ -25,17 +25,17 @@
   (every? whitespace? (seq string)))
 
 (defn has-award? [book award]
-  :-)
+  (contains? (:awards book) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (every? (fn [x] (has-award? book x)) awards))
 
 (defn my-some [pred a-seq]
-  :-)
+  (some pred a-seq))
 
 (defn my-every? [pred a-seq]
   :-)
 
 (defn prime? [n]
-  :-)
+  )
 ;^^
