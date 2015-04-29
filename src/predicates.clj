@@ -36,8 +36,9 @@
   (first (filter (fn [x] (if x true false)) (map pred a-seq))))
 
 (defn my-every? [pred a-seq]
-  :-)
+   (empty? (filter false? (map pred a-seq))))
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [x] (= 0 (mod n x)))]
+    (not (some pred (range 2 n)))))
 ;^^
