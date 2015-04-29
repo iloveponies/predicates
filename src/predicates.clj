@@ -31,11 +31,14 @@
   (every? (fn [x] (has-award? book x)) awards))
 
 (defn my-some [pred a-seq]
-  (some pred a-seq))
+  (let [val (filter pred a-seq)]
+    (if (empty? val) false (pred (first val)))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (= (count (filter pred a-seq)) (count a-seq) ))
 
 (defn prime? [n]
-  )
+  (let [divisible-by (fn [x] (= 0 (mod n x)))]
+    (not (some divisible-by (range 2 n)))
+  ))
 ;^^
