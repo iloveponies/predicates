@@ -32,7 +32,7 @@
   (every? book-has-award? awards)))
 
 (defn my-some [pred a-seq]
-  (let [truthy (fn [x] (if x true false))]
+  (let [truthy [x] (if x true false)]
   (first (filter truthy (map pred a-seq)))
 ))
 
