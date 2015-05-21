@@ -29,7 +29,9 @@
     (contains? aws award)))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+ (let [aws (:awards book)
+        emp #{}]
+    (= emp (clojure.set/difference awards aws))))
 
 (defn my-some [pred a-seq]
   :-)
