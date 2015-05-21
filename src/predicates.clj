@@ -33,14 +33,13 @@
         emp #{}]
     (= emp (clojure.set/difference awards aws))))
 
-
 (defn my-some [pred a-seq]
   (first (filter (fn [x] (not (= false x))) (map pred a-seq))))
 
-
 (defn my-every? [pred a-seq]
-  :-)
+  (= a-seq (filter pred a-seq)))
 
 (defn prime? [n]
-  :-)
+    (let [pred (fn [x] (= 0 (mod n x)))]
+    (not (some pred (range 2 n)))))
 ;^^
