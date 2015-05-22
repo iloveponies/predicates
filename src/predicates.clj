@@ -31,11 +31,14 @@
   (every? (fn [award] (has-award? book award)) awards))
 
 (defn my-some [pred a-seq]
-  :-)
+  (let [ms (first (filter (complement (or false? nil?)) (map pred a-seq)))]
+    (if (nil? ms) false ms)))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (let [ms (filter (complement (or false? nil?)) (map pred a-seq))]
+    (= (count a-seq) (count ms))))
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [k] (= (rem n k) 0))]
+    (not (some pred (range 2 n)))))
 ;^^
