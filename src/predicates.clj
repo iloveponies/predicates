@@ -32,11 +32,14 @@
                           (every? has-award-partial? awards)))
 
 (defn my-some [pred a-seq]
-  :-)
+  (let [f (first (set (map pred a-seq)))]
+    (if f f false)))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (or (empty? a-seq)
+    (key (first (sort (group-by (fn [x] x) (map pred a-seq)))))))
 
 (defn prime? [n]
-  :-)
-;^^
+  (let [divs? (fn [k]
+        (== (mod n k) 0))]
+    (my-every? false? (map divs? (range 2 n)))))
