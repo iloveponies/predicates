@@ -33,15 +33,18 @@
 (defn HAS-ALL-THE-AWARDS? [book awards]
   (every? (fn [x] (has-award? book x)) awards))
 
-(defn my-some [pred a-seq]   ; ei tehty
-  (cond (= first pred) (
-        (>= 1 (count (filter pred a-seq))) true
-        :else false)))
+(defn my-some [pred a-seq]
+  (if (<= 1 (count (filter pred a-seq)))
+    (if (= first pred)
+      (first (filter number? (map first a-seq)))
+      true)
+    false))
 
 (defn my-every? [pred a-seq]    ; ei tehty
-  :-)
+  (if (= (count a-seq) (count (filter pred a-seq))) true false))
 
 (defn prime? [n]
   (let [pred (fn [x] (if (= 0 (mod n x))true false))]
     (not (some pred (range 2 n)))))
+
 
