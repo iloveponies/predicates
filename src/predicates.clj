@@ -43,5 +43,6 @@
   (empty? (filter false? (map pred a-seq))))
 
 (defn prime? [n]
-  :-)
+  (let [divisible? #(= 0 (rem n %))]
+    (not (some divisible? (range 2 n)))))
 ;^^
