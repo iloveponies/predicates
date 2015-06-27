@@ -34,10 +34,13 @@
   (every? true? (map #(contains? (:awards book) %) awards)))
 
 (defn my-some [pred a-seq]
-  :-)
+  (cond
+    (empty? a-seq) nil
+    (pred (first a-seq)) (pred (first a-seq))
+    :else (my-some pred (rest a-seq))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (empty? (filter false? (map pred a-seq))))
 
 (defn prime? [n]
   :-)
