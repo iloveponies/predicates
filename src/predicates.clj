@@ -22,20 +22,24 @@
   (Character/isWhitespace character))
 
 (defn blank? [string]
-  :-)
+  (every? whitespace? string))
 
 (defn has-award? [book award]
-  :-)
+  ((set->predicate (:awards book)) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (every? (set->predicate (:awards book)) awards))
 
 (defn my-some [pred a-seq]
-  :-)
+  (first (map pred (filter pred a-seq))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (empty? (filter (complement pred) a-seq)))
 
 (defn prime? [n]
-  :-)
+  (let [divisor? (fn [potential-divisor] (== (mod n potential-divisor) 0))
+        ; n/2 optimization
+        potential-divisors (range 2 (+ (/ n 2) 1))]
+    (not (some divisor? potential-divisors))))
+
 ;^^
