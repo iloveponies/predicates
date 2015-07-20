@@ -28,21 +28,18 @@
   (contains? (get book :awards) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  (let [filter-f (fn [award] (has-award? book award))]
-    (= (count (filter filter-f awards)) (count awards))))
+  (= (count (filter (has-award? book award) awards)) (count awards)))
 
 (defn my-some [pred a-seq]
-  (let [filter-f (fn [elm] (pred elm))
-    elems (filter filter-f a-seq)]
+  (let [elems (filter (pred a-seq))]
     (if (empty? elems)
       false
       (pred (first elems)))))
 
 (defn my-every? [pred a-seq]
-  (= (count (filter (fn [x] (pred x)) a-seq)) (count a-seq)))
+  (= (count (filter (pred x) a-seq)) (count a-seq)))
 
 (defn prime? [n]
-  (let [div (fn [x] (= (mod n x) 0))]
-    (not (some div (range 2 n)))))
+  (not (some (= (mod n x) 0) (range 2 n))))
 
 ;^^
