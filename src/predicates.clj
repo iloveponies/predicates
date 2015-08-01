@@ -72,5 +72,4 @@
 (defn prime? [n]
   (let [pred (fn[div] (= (mod n div) 0))]
     (not (some pred (range 2 n)))))
-
 ;^^
