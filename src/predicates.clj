@@ -38,11 +38,12 @@
     (if (not (empty? filtered-seq))
       (pred (first filtered-seq))
       false)))
-    
 
 (defn my-every? [pred a-seq]
-  )
+  (let [filtered-seq (filter pred a-seq)]
+    (= filtered-seq a-seq)))
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [k] (integer? (/ n k)))]
+    (not (some pred (range 2 n)))))
 ;^^
