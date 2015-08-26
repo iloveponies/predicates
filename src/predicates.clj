@@ -31,10 +31,12 @@
   (every? (fn [award] (has-award? book award)) awards))
 
 (defn my-some [pred a-seq]
-  (first (filter pred a-seq)))
+  (let [mapped (map pred a-seq)
+        checked (first (filter boolean mapped))]
+    (if (= checked nil) false checked)))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (= (count a-seq) (count (filter pred a-seq))))
 
 (defn prime? [n]
   (let [pred (fn [x] (= (mod n x) 0))]
