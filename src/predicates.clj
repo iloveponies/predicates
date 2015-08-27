@@ -13,7 +13,7 @@
    (fn [value] (contains? a-set value)))
 
 (defn pred-and [pred1 pred2]
-  :-)
+(fn [x] (= (pred1 x) (pred2 x))))
 
 (defn pred-or [pred1 pred2]
   :-)
