@@ -39,5 +39,6 @@
   :-)
 
 (defn prime? [n]
-  :-)
-;^^
+  (let [jaollinen? (fn [x] (if (== 0 (rem n x)) true false))]
+    (not (some jaollinen? (range 2 n)))))
+
