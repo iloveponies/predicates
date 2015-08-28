@@ -29,7 +29,13 @@
   (contains? book :awards))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  (contains? (book :awards) awards))
+ (let [summa(count awards)
+       summa2 (count (book :awards))
+       returnValue(if (<= summa summa2)
+         true
+         false)]
+   returnValue))
+
 
 (defn my-some [pred a-seq]
   :-)
