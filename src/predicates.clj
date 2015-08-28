@@ -36,12 +36,17 @@
          false)]
    returnValue))
 
-
 (defn my-some [pred a-seq]
-  :-)
+(let[arvo(some pred a-seq)
+     returnValue(cond(nil? arvo)
+       "falsey"
+       number? arvo
+      :else nil)]
+  returnValue))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (every? pred a-seq))
+
 
 (defn prime? [n]
   :-)
