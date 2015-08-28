@@ -29,7 +29,7 @@
   (contains? book :awards))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (contains? (book :awards) awards))
 
 (defn my-some [pred a-seq]
   :-)
