@@ -26,7 +26,7 @@
 
 
 (defn has-award? [book award]
-  :-)
+  (contains? book :awards))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
   :-)
