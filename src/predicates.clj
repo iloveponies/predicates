@@ -10,7 +10,9 @@
   (fn [k] (== k n)))
 
 (defn set->predicate [a-set]
-  :-)
+  (fn [x] (if (empty? a-set) false
+            (if (= x (first a-set)) true
+              ((set->predicate (rest a-set)) x)))))
 
 (defn pred-and [pred1 pred2]
   (fn [x] (if (and (pred1 x)
@@ -33,7 +35,9 @@
   (contains? (:awards book) awards))
 
 (defn my-some [pred a-seq]
-  :-)
+  (if (empty? a-seq) false
+    (if (pred (first a-seq)) (pred (first a-seq))
+      (my-some pred (rest a-seq)))))
 
 (defn my-every? [pred a-seq]
   :-)
@@ -41,4 +45,3 @@
 (defn prime? [n]
   (let [jaollinen? (fn [x] (if (== 0 (rem n x)) true false))]
     (not (some jaollinen? (range 2 n)))))
-
