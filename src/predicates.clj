@@ -53,11 +53,11 @@
   (every? (fn [award] (has-award? book award)) awards))
 
 (defn my-some [pred a-seq]
-  (first (filter pred a-seq)))
+  (first (filter (fn [x] (true? (boolean x))) (map pred a-seq))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (= (count a-seq) (count (filter (fn [x] (true? (boolean x))) (map pred a-seq)))))
 
 (defn prime? [n]
-  :-)
+  (not (some (fn [x] (= (mod n x) 0)) (range 2 n))))
 ;^^
