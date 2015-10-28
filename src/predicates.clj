@@ -28,7 +28,7 @@
   ((complement nil?) (award (book :awards))))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (every? (fn [x] (has-award? book x)) awards))
 
 (defn my-some [pred a-seq]
   :-)
