@@ -37,5 +37,6 @@
   (empty? (filter (complement true?) (map pred a-seq))))
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [x] (= 0 (mod n x)))]
+    (not (some pred (range 2 n)))))
 ;^^
