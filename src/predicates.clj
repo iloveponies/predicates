@@ -46,22 +46,13 @@
 )
 
 (defn my-some [pred a-seq]
-    (cond
-       (empty? a-seq) false
-       (pred (first a-seq)) (pred (first a-seq))
-       :else (my-some pred (rest a-seq))
-    )
+    (first (map pred (filter pred a-seq)))
 )
 
 
 (defn my-every? [pred a-seq]
-    (cond
-       (empty? a-seq) true
-       (not (pred (first a-seq))) false
-       :else (recur pred (rest a-seq))
-    )
+    (= (count a-seq) (count (filter pred a-seq)))
 )
-
 
 
 (defn prime? [n]
