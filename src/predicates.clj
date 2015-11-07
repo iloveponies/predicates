@@ -33,13 +33,8 @@
   (let [book-has-award? (fn [award] (has-award? book award))]
   (every? book-has-award? awards)))
 
-;;This seems like it's not the right answer, but i did not get why 
-;; it should return the behaviour specified and recursion seemed like the most readable way to do it
 (defn my-some [pred a-seq]
-  (cond     
-            (empty? a-seq)        false
-            (pred (first a-seq))  (if (first a-seq) (first a-seq) true)
-            :else                 (my-some pred (rest a-seq))))
+  (first (filter (fn [x] (if x x false)) (map pred a-seq))))
 
 (defn my-every? [pred a-seq]
   (cond     
