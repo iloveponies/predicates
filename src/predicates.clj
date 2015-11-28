@@ -31,7 +31,7 @@
   (every? (fn [x] (has-award? book x)) awards))
 
 (defn my-some [pred a-seq]
-  :-)
+  (> (count (filter pred a-seq)) 0 ))
 
 (defn my-every? [pred a-seq]
   :-)

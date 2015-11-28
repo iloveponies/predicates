@@ -41,3 +41,15 @@
   (contains? (:awards book) award))
 (has-award? ysabel :world-fantasy) ;=> true
 (has-award? scanner-darkly :hugo)  ;=> false
+(defn my-some [pred a-seq]
+  ;;return true or false
+  ;; not finished
+  (first (sort (filter pred a-seq))))
+(defn my-some [pred a-seq]
+  ;;return true or false
+  ;; not finished
+  (first (sort (filter pred a-seq))))
+(my-some whitespace? "gg gg")
+(defn whitespace? [character]
+  (Character/isWhitespace character))
+(my-some whitespace? "gg gg")
