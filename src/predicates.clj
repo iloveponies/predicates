@@ -34,8 +34,10 @@
   (> (count (filter pred a-seq)) 0 ))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (= (count (filter pred a-seq)) (count a-seq)))
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [x] (= (mod n x) 0))]
+    (not (some pred (range 2 n)))))
+
 ;^^

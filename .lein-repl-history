@@ -53,3 +53,6 @@
 (defn whitespace? [character]
   (Character/isWhitespace character))
 (my-some whitespace? "gg gg")
+(mod 2 4)
+(mod 4 4)
+(mod 4 2)
