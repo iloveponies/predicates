@@ -32,17 +32,23 @@
 )
 
 (defn has-award? [book award]
-  :-)
+  (contains? (:awards book) award)
+)
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (every? (:awards books) awards)
+)
 
 (defn my-some [pred a-seq]
-  :-)
+  (first (filter identity (map pred a-seq)))
+)
 
 (defn my-every? [pred a-seq]
-  :-)
+  (every? pred a-seq)
+)
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [x] (== (mod n x) 0))]
+    (not (some pred (range 2 n))))
+)
 ;^^
