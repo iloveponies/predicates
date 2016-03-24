@@ -35,7 +35,11 @@
   )
 
 (defn my-some [pred a-seq]
-  :-)
+  (let [truthies (filter pred a-seq)]
+    (first (map pred truthies))
+    )
+  )
+
 
 (defn my-every? [pred a-seq]
   :-)
