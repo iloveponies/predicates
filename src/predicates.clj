@@ -42,8 +42,10 @@
 
 
 (defn my-every? [pred a-seq]
-  :-)
+  (empty? (filter false? (map pred a-seq)))
+  )
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [p] (= 0 (mod n p)))]
+        (not (some pred (range 2 n)))))
 ;^^
