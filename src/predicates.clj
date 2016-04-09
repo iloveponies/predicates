@@ -58,26 +58,6 @@
       (pred (first result))
       (not (empty? result)))))
 
-(my-some even? [1 3 5 7])       ;=> falsey
-(my-some even? [1 3 5 7 8])     ;=> true
-(my-some neg? [1 3 5 0 7 8])    ;=> falsey
-(my-some neg? [1 3 5 0 7 -1 8]) ;=> true
-(my-some neg? [])               ;=> falsey
-(my-some first [[false] [1]])   ;=> 1
-(my-some first [[false] []])    ;=> falsey
-(my-some nil? [1 2])            ;=> falsey
-(my-some nil? [1 nil 2])        ;=> true
-
-(some even? [1 3 5 7])       ;=> falsey
-(some even? [1 3 5 7 8])     ;=> true
-(some neg? [1 3 5 0 7 8])    ;=> falsey
-(some neg? [1 3 5 0 7 -1 8]) ;=> true
-(some neg? [])               ;=> falsey
-(some first [[false] [1]])   ;=> 1
-(some first [[false] []])    ;=> falsey
-(some nil? [1 2])            ;=> falsey
-(some nil? [1 nil 2])        ;=> true
-
 ;=============================================
 
 (defn my-every? [pred a-seq]
