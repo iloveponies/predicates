@@ -53,23 +53,23 @@
 ;=============================================
 
 (defn my-some [pred a-seq]
-  (let [result (filter (fn [x] (pred x)) a-seq)]
-    (if (not (nil? (first result)))
+  (let [result (filter pred a-seq)]
+    (if-not (nil? (first result))
       (pred (first result))
-      (not (empty? result)))))
+      (boolean (seq result)))))
 
 ;=============================================
 
 (defn my-every? [pred a-seq]
   (let [boos (map pred a-seq)]
-    (empty? (filter (fn [x] (not x)) boos))))
+    (empty? (filter not boos))))
 
 ;=============================================
 
 (defn prime? [n]
   (let [pred (fn [x] (and
-                       (= 0 (mod n x))
+                       (zero? (mod n x))
                        (not (== n x))))]
-    (not (some pred (range 2 n)))))
+    (not-any? pred (range 2 n))))
 
 ;^^
