@@ -3,11 +3,17 @@
 (defn sum-f [f g x]
   (+ (f x) (g x)))
 
+;;;(defn less-than [n]
+;;;  (fn [x] (< x n)))
+
 (defn less-than [n]
-  (fn [x] (< x n)))
+  (partial > n))
+
+;;;(defn equal-to [n]
+;;;  (fn [x] (== x n)))
 
 (defn equal-to [n]
-  (fn [x] (== x n)))
+  (partial == n))
 
 (defn set->predicate [a-set]
   (fn [x] (contains? a-set x)))
