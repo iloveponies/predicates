@@ -40,20 +40,13 @@
 (defn HAS-ALL-THE-AWARDS? [book awards]
   (every? (:awards book) awards))
 
-(defn my-some [pred a-seq]
+(defn my-some1 [pred a-seq]
   ((complement empty?) (filter true? (map pred a-seq))))
 
-
-(my-some even? [1 3 5 7])       ;=> falsey
-(my-some even? [1 3 5 7 8])     ;=> true
-(my-some neg? [1 3 5 0 7 8])    ;=> falsey
-(my-some neg? [1 3 5 0 7 -1 8]) ;=> true
-(my-some neg? [])               ;=> falsey
-(my-some first [[false] [1]])   ;=> 1
-(my-some first [[false] []])    ;=> falsey
-(my-some nil? [1 2])            ;=> falsey
-(my-some nil? [1 nil 2])        ;=> true
-
+(defn my-some [pred a-seq]
+  (if (nil? (first (remove false? (map pred a-seq))))
+    false
+    (first (remove false? (map pred a-seq)))))
 
 (defn my-every? [pred a-seq]
   (empty? (filter false? (map pred a-seq))))
@@ -61,6 +54,5 @@
 (defn prime? [n]
   (let [pred #(= 0 (mod n %))]
     (not (some pred (range 2 n)))))
-
 
 ;^^
