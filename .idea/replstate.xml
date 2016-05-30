@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ReplState" timestamp="1464395747624">{:repl-history {:ide [], :local [&quot;(sum-f inc dec 4)&quot; &quot;(use 'predicates)&quot; &quot;(defn apply-1 [f x] (f x))&quot; &quot;(apply-1 str 13)&quot; &quot;(sum-f inc 5 10)&quot; &quot;(+ 2 2)&quot;], :remote []}}</component>
+</project>
