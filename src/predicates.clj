@@ -37,5 +37,6 @@
   (nil? (first (filter (fn [x] (= x false)) (map pred a-seq)))))
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [divider] (== 0 (mod n divider)))]
+    (not (some pred (range 2 n)))))
 ;^^
