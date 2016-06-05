@@ -34,7 +34,7 @@
   (first (filter (fn [x] (not (= x false))) (map pred a-seq))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (nil? (first (filter (fn [x] (= x false)) (map pred a-seq)))))
 
 (defn prime? [n]
   :-)
