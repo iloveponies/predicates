@@ -29,11 +29,9 @@
     ((has-award-1? book) award)
     false))
 
-(defn has-award-1? [book]
-  (fn [award] (contains? (:awards book) award)))
-
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  (every? (has-award-1? book) awards))
+  (let [award? (fn [x] (has-award? book x))]
+    (every? award? awards)))
 
 (defn check-some [pred]
   (fn [v] (pred v)))
