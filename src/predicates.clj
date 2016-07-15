@@ -31,7 +31,7 @@
   (let [helper (fn [award] (has-award? book award))] (every? helper awards)))
 
 (defn my-some [pred a-seq]
-  (first (filter pred a-seq)))
+  (apply pred (filter pred a-seq)))
 
 (my-some even? [1 3 5 7 8])
 
