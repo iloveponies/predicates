@@ -22,6 +22,8 @@
 (defn whitespace? [character]
   (Character/isWhitespace character))
 
+(println "baby")
+
 (defn blank? [string] 
   (every? whitespace? string))
 
@@ -32,11 +34,12 @@
   (every? true? (map (fn [x] (has-award? book x)) awards)))
 
 (defn my-some [pred a-seq]
-  :-)
+  (reduce #(or %1 %2) (map pred a-seq)))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (empty? (filter  #((complement pred) %) a-seq)))
 
 (defn prime? [n]
-  :-)
+  (let [pred #(== 0 (mod n %))]
+    (not (some pred (range 2 n)))))
 ;^^
