@@ -31,7 +31,15 @@
   (every? (fn [award] (has-award? book award)) awards))
 
 (defn my-some [pred a-seq]
-  (first (filter pred a-seq)))
+  (let [apu (fn [x] (if (or
+                         (= (pred x) nil)
+                         (= (pred x) false))
+                      false
+                      (pred x)))
+        apu2 (filter apu a-seq)]
+    (if (empty? apu2)
+      false
+      (pred (first apu2)))))
 
 (defn my-every? [pred a-seq]
   (empty? (filter (fn [x] (if (or (= x false) (= x nil))
