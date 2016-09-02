@@ -35,12 +35,14 @@
   )
 (defn HAS-ALL-THE-AWARDS? [book awards]
  (every? (:awards book) awards)
-  )
+)
+
 (defn my-some [pred a-seq]
 
 (if (first (filter pred a-seq) )
   true
   false))
+
 
 
 
