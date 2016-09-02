@@ -38,17 +38,10 @@
 )
 
 (defn my-some [pred a-seq]
-
-(if (first (filter pred a-seq) )
-  true
-  false))
-
-
-
+:-)
 
 (defn my-every? [pred a-seq]
   :-)
 
 (defn prime? [n]
   :-)
-;^^
