@@ -42,6 +42,8 @@
   true
   false))
 
+
+
 (defn my-every? [pred a-seq]
   :-)
 
