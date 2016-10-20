@@ -34,7 +34,9 @@
   (first (map pred(filter pred a-seq))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (if (empty? a-seq)
+    true
+    (not (my-some (complement pred) a-seq))))
 
 (defn prime? [n]
   :-)
