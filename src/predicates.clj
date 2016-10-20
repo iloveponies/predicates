@@ -39,5 +39,6 @@
     (not (my-some (complement pred) a-seq))))
 
 (defn prime? [n]
-  :-)
+  (let [divisible-by (fn [x] (integer? (/ n x)))]
+   (not (some divisible-by (range 2 n)))))
 ;^^
