@@ -25,7 +25,7 @@
   (or (every? whitespace? string) (empty? string)))
 
 (defn has-award? [book award]
-  :-)
+  (contains? (book :awards) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
   :-)
