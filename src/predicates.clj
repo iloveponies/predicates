@@ -31,7 +31,7 @@
   (every? (fn [award] (has-award? book award)) awards))
 
 (defn my-some [pred a-seq]
-  :-)
+  (first (map pred(filter pred a-seq))))
 
 (defn my-every? [pred a-seq]
   :-)
