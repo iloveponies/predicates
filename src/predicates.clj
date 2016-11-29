@@ -28,13 +28,20 @@
     (empty? (filter (complement blank-pred?) chars))))
 
 (defn has-award? [book award]
-  :-)
+  (contains? (:awards book) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (let [ book-awards (:awards book)
+         award-helper (fn [award] (contains? book-awards award)) ]
+    (every? award-helper awards)))
 
 (defn my-some [pred a-seq]
-  :-)
+  (let [ vals (map pred a-seq) 
+         helper (fn [val] 
+                  (if (or (nil? val) (= false val))
+                    false
+                    true ))]
+    (first (filter helper vals))))
 
 (defn my-every? [pred a-seq]
   :-)
