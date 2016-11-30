@@ -44,8 +44,16 @@
     (first (filter helper vals))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (let [ vals (map pred a-seq) ]        
+   (empty? 
+    (filter false? vals))))
 
 (defn prime? [n]
-  :-)
+  (let [ is-dividor?
+        (fn [num] 
+          (if (= (mod n num) 0)
+            true
+            false )) ]
+    (empty? 
+        (filter true? (map is-dividor? (range 2 n))))))
 ;^^
