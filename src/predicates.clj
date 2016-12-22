@@ -7,7 +7,7 @@
   (fn [k] (< k n)))
 
 (defn equal-to [n]
-  :-)
+  (fn [k] (== k n)))
 
 (defn set->predicate [a-set]
   :-)
