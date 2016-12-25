@@ -10,7 +10,7 @@
   (fn [k] (== k n)))
 
 (defn set->predicate [a-set]
-  :-)
+  (fn [a-map] (contains? a-set a-map)))
 
 (defn pred-and [pred1 pred2]
   :-)
