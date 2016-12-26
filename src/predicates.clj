@@ -28,10 +28,14 @@
   (contains? (book :awards) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (let [fun (fn [award] (has-award? book award))]
+    (every? fun awards)))
 
 (defn my-some [pred a-seq]
-  :-)
+  (let [fun (fn [x] (pred x))]
+    (let [lista (map fun a-seq)]
+      (first (filter (fn [x] (not= x false)) lista)))))
+
 
 (defn my-every? [pred a-seq]
   :-)
