@@ -13,19 +13,19 @@
   (fn [a-map] (contains? a-set a-map)))
 
 (defn pred-and [pred1 pred2]
-  :-)
+  (fn [a-map] (and (pred1 a-map) (pred2 a-map))))
 
 (defn pred-or [pred1 pred2]
-  :-)
+  (fn [a-map] (or (pred1 a-map) (pred2 a-map))))
 
 (defn whitespace? [character]
   (Character/isWhitespace character))
 
 (defn blank? [string]
-  :-)
+  (every? whitespace? (seq string)))
 
 (defn has-award? [book award]
-  :-)
+  (contains? (book :awards) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
   :-)
@@ -39,3 +39,4 @@
 (defn prime? [n]
   :-)
 ;^^
+
