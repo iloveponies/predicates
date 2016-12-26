@@ -36,11 +36,19 @@
     (let [lista (map fun a-seq)]
       (first (filter (fn [x] (not= x false)) lista)))))
 
-
 (defn my-every? [pred a-seq]
-  :-)
+  (let [fun (fn [x] (pred x))]
+    (let [lista (map fun a-seq)]
+      (let [fil (filter (fn [x] (not= x false)) lista)]
+        (if (= (count fil) (count lista))
+          true
+          false)))))
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [x] (== 0 (mod n x)))]
+    (not (some pred (range 2 n)))))
+
+;;(filter prime? (range 2 50))
+
 ;^^
 
