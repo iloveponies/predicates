@@ -32,7 +32,7 @@
     (every? award? awards)))
 
 (defn my-some [pred a-seq]
-  ((complement empty?) (filter pred a-seq)))
+  (first (filter (complement false?) (map pred a-seq))))
 
 (defn my-every? [pred a-seq]
   (empty? (filter false? (map pred a-seq))))
