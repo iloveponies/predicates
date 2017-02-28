@@ -60,7 +60,7 @@
   (if (empty? (filter (complement pred) a-seq)) true false))
 
 (defn prime? [n]
-  (let [pred (fn [x] (integer? (/ n x)))]
+  (let [pred (fn [x] (contains? (range 2 n) (/ n x)))]
     (not (some pred (range 2 n)))))
 ;(use 'predicates)
 ;(load-file "./src/predicates.clj")
