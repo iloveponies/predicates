@@ -28,18 +28,17 @@
   (every? whitespace? string))
 
 (defn has-award? [book award]
-  (contains? (:awards book) award))
+  ((set->predicate (:awards book)) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  (every? (fn [x] (has-award? book x)) awards))
+  (every? (set->predicate (:awards book)) awards))
 
 
 (defn my-some [pred a-seq]
-  (when (seq a-seq)
-  (or (pred (first a-seq)) (recur pred (next a-seq)))))
+  (first (filter boolean (map pred a-seq))))
 
 (defn my-every? [pred a-seq]
-  (= (count (filter pred a-seq)) (count a-seq)))
+  (empty? (filter (complement pred) a-seq)))
 
 (defn prime? [n]
   (let [pred (fn [x] (= 0 (mod n x)))]
