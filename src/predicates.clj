@@ -1,41 +1,41 @@
 (ns predicates)
 
 (defn sum-f [f g x]
-  :-)
+  (+ (f x) (g x)))
 
 (defn less-than [n]
-  :-)
+  (fn [k] (< k n)))
 
 (defn equal-to [n]
-  :-)
+  (fn [k] (== k n)))
 
 (defn set->predicate [a-set]
-  :-)
+  (fn [x] (contains? a-set x)))
 
 (defn pred-and [pred1 pred2]
-  :-)
+  (fn [x] (and (pred1 x) (pred2 x))))
 
 (defn pred-or [pred1 pred2]
-  :-)
+  (fn [x] (or (pred1 x) (pred2 x))))
 
 (defn whitespace? [character]
   (Character/isWhitespace character))
 
 (defn blank? [string]
-  :-)
+  (every? (fn [x] (whitespace? x)) string))
 
 (defn has-award? [book award]
-  :-)
+  ((set->predicate (:awards book)) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (every? (fn [a] (has-award? book a)) awards))
 
 (defn my-some [pred a-seq]
-  :-)
+  (first (filter (fn [x] (and (not (nil? x)) (not (= x false)))) (map pred a-seq))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (= (count (filter (fn [x] (and (not (nil? x)) (not (= false x)))) (map pred a-seq))) (count a-seq)))
 
 (defn prime? [n]
-  :-)
+  (not (some (fn [x] (= (mod n x) 0)) (range 2 n))))
 ;^^
