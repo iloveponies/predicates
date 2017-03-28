@@ -36,7 +36,7 @@
     (if (> (count filtered-seq) 0) (pred (first filtered-seq)) nil)))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (empty? (filter (complement pred) a-seq)))
 
 (defn prime? [n]
   :-)
