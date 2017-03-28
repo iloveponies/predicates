@@ -29,10 +29,11 @@
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
   (let [book-has-award? (fn [x] (has-award? book x))]
-  (every? book-has-award? awards)))
+    (every? book-has-award? awards)))
 
 (defn my-some [pred a-seq]
-  :-)
+  (let [filtered-seq (filter pred a-seq)]
+    (if (> (count filtered-seq) 0) (pred (first filtered-seq)) nil)))
 
 (defn my-every? [pred a-seq]
   :-)
