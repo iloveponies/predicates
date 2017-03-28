@@ -38,6 +38,10 @@
 (defn my-every? [pred a-seq]
   (empty? (filter (complement pred) a-seq)))
 
+(defn divides? [divisor n]
+  (if (== (mod n divisor) 0) true false))
+
 (defn prime? [n]
-  :-)
+  (let [divides-n (fn [k] (divides? k n))]
+    (not (some divides-n (range 2 n)))))
 ;^^
