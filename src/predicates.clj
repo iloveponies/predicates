@@ -10,32 +10,38 @@
   (fn [x] (== x n)))
 
 (defn set->predicate [a-set]
-  :-)
+  (fn [x] (contains? a-set x)))
+
+(defn pred-some [pred1 pred2 pred]
+  (fn [x] (pred (pred1 x) (pred2 x))))
 
 (defn pred-and [pred1 pred2]
-  :-)
+  (pred-some pred1 pred2 #(and % %2)))
 
 (defn pred-or [pred1 pred2]
-  :-)
+  (pred-some pred1 pred2 #(or % %2)))
 
 (defn whitespace? [character]
   (Character/isWhitespace character))
 
 (defn blank? [string]
-  :-)
+  (every? whitespace? string))
 
 (defn has-award? [book award]
-  :-)
+  (contains? (:awards book) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (every? #(has-award? book %) awards))
 
 (defn my-some [pred a-seq]
-  :-)
+  (first (filter #(boolean %) (map pred a-seq))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  ;; This is a bit ugly..
+  (== (count a-seq)
+      (count (filter #(boolean %) (map pred a-seq)))))
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [x] (== (mod n x) 0))]
+    (not (some pred (range 2 n)))))
                                         ;^^
