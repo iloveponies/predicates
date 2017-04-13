@@ -1,0 +1,4 @@
+(use 'predicates)
+has-award
+has-award?
+blank?

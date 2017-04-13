@@ -30,11 +30,14 @@
 (defn has-award? [book award]
   ((set->predicate (:awards book)) award))
 
+(defn key->predicate [a-key]
+  (fn [a-map] (contains? a-map a-key)))
+
+
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  (fn [award] (has-award? book award)
-
-  ;;(every? (has-award? book (:awards book)) awards))
+  (and (>= (count (:awards book)) (count awards))
+       (every? #(contains? (:awards book) %) awards)))
 
 (defn my-some [pred a-seq]
   :-)
