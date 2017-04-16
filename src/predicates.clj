@@ -5,10 +5,12 @@
   )
 
 (defn less-than [n]
-  :-)
+  (fn [k] (< k n))
+  )
 
 (defn equal-to [n]
-  :-)
+  (fn [k] (== n k))
+  )
 
 (defn set->predicate [a-set]
   :-)
