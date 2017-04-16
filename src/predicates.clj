@@ -13,7 +13,8 @@
   )
 
 (defn set->predicate [a-set]
-  :-)
+  (fn [value] (contains? a-set value))
+  )
 
 (defn pred-and [pred1 pred2]
   :-)
