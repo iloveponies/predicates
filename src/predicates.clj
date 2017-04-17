@@ -58,7 +58,9 @@
   ))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (let [filtered (filter pred a-seq)]
+    (= (count filtered) (count a-seq))
+  ))
 
 (defn prime? [n]
   :-)
