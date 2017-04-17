@@ -28,7 +28,13 @@
   (Character/isWhitespace character))
 
 (defn blank? [string]
-  :-)
+  (let [predicate (fn [character] (or
+                                    (nil? character)
+                                    (whitespace? character)
+                                    ))]
+    (every? predicate string)
+    )
+  )
 
 (defn has-award? [book award]
   :-)
