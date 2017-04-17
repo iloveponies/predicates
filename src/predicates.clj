@@ -50,7 +50,12 @@
   )
 
 (defn my-some [pred a-seq]
-  :-)
+  (let [filtered (filter pred a-seq)]
+    (if (< 0 (count filtered))
+      (pred (first filtered))
+      false
+      )
+  ))
 
 (defn my-every? [pred a-seq]
   :-)
