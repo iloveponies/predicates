@@ -21,7 +21,8 @@
   )
 
 (defn pred-or [pred1 pred2]
-  :-)
+  (fn [value] (or (pred1 value) (pred2 value)))
+  )
 
 (defn whitespace? [character]
   (Character/isWhitespace character))
