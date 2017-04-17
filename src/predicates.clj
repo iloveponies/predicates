@@ -43,7 +43,11 @@
   )
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (let [book-awards (:awards book)
+        predicate (fn [award] (contains? book-awards award))]
+    (every? predicate awards)
+    )
+  )
 
 (defn my-some [pred a-seq]
   :-)
