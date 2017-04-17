@@ -17,7 +17,8 @@
   )
 
 (defn pred-and [pred1 pred2]
-  :-)
+  (fn [value] (and (pred1 value) (pred2 value)))
+  )
 
 (defn pred-or [pred1 pred2]
   :-)
