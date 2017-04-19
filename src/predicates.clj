@@ -20,7 +20,9 @@
 
 
 (defn pred-and [pred1 pred2]
-  :-)
+  "Exercise 4"
+  (fn [x] (and (pred1 x) (pred2 x))))
+
 
 (defn pred-or [pred1 pred2]
   :-)
