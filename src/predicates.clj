@@ -33,7 +33,10 @@
   (Character/isWhitespace character))
 
 (defn blank? [string]
-  :-)
+  "Exercise 6"
+  ;(or (every? whitespace? string) (every? empty? string))
+  (every? whitespace? string))
+
 
 (defn has-award? [book award]
   :-)
