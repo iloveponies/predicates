@@ -15,7 +15,9 @@
 
 
 (defn set->predicate [a-set]
-  :-)
+  "Exercise 3"
+  (fn [value] (contains? a-set value)))
+
 
 (defn pred-and [pred1 pred2]
   :-)
