@@ -48,7 +48,12 @@
 
 
 (defn my-some [pred a-seq]
-  :-)
+  "Exercise 9"
+  (if (some pred a-seq)
+    (some pred a-seq)
+    (> (count (filter pred a-seq)) 0)))
+
+
 
 (defn my-every? [pred a-seq]
   :-)
