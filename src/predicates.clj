@@ -34,12 +34,13 @@
 
 (defn blank? [string]
   "Exercise 6"
-  ;(or (every? whitespace? string) (every? empty? string))
   (every? whitespace? string))
 
 
 (defn has-award? [book award]
-  :-)
+  "Exercise 7"
+  (boolean (if (book :awards) award)))
+
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
   :-)
