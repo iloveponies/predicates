@@ -43,7 +43,9 @@
 
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  "Exercise 8"
+  (every? (book :awards) awards))
+
 
 (defn my-some [pred a-seq]
   :-)
