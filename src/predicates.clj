@@ -54,9 +54,12 @@
     (> (count (filter pred a-seq)) 0)))
 
 
-
 (defn my-every? [pred a-seq]
-  :-)
+  "Exercise 10"
+  (if (not (empty? a-seq))
+    (every? pred a-seq)
+    true))
+
 
 (defn prime? [n]
   :-)
