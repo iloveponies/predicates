@@ -61,6 +61,12 @@
     true))
 
 
+(defn divisible? [a b]
+  (zero? (mod a b)))
+
+
 (defn prime? [n]
-  :-)
+  "Exercise 11"
+  (and (> n 1) (not-any? (partial divisible? n) (range 2 n))))
+
 ;^^
