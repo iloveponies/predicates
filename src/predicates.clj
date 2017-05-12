@@ -40,11 +40,15 @@
   (every? (fn [award] (has-award? book award)) awards))
 
 (defn my-some [pred a-seq]
-  :-)
+  (first
+    (map pred (filter
+                (fn [val]
+                  (pred val)) a-seq))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (empty? (filter (complement pred) a-seq)))
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [x] (= 0 (mod n x)))]
+    (not (some pred (range 2 n)))))
 ;^^
