@@ -15,22 +15,29 @@
             (nil? x))))
 
 (defn pred-and [pred1 pred2]
-  :-)
+  (fn [x]
+    (and
+      (pred1 x)
+      (pred2 x))))
 
 (defn pred-or [pred1 pred2]
-  :-)
+  (fn [x]
+    (or
+      (pred1 x)
+      (pred2 x))))
 
 (defn whitespace? [character]
   (Character/isWhitespace character))
 
 (defn blank? [string]
-  :-)
+  (every? whitespace? string))
 
 (defn has-award? [book award]
-  :-)
+  (let [awards (:awards book)]
+    (boolean (award awards))))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (every? (fn [award] (has-award? book award)) awards))
 
 (defn my-some [pred a-seq]
   :-)
