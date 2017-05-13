@@ -1,0 +1,83 @@
+(filter #{{1 2 3} [0 2 4 6])
+(filter #{1 2 3} [0 2 4 6])
+(filter #{1 2 3 nil} [0 2 4 6 nil])
+(contains? #{1 2 3} 3)
+(contains? [1 2 3] 3)
+(seq 1 2 3)
+(seq #{1 2 3})
+[1 2 3]
+(contains? [1 2 3 nil] nil)
+(contains? #{1 2 3 nil} nil)
+(filter #{1 2 3 nil} [0 2 4 6 nil])
+(concat (filter #{1 2 3 nil} [0 2 4 6 nil]) nil)
+(conj (filter #{1 2 3 nil} [0 2 4 6 nil]) nil)
+quit
+(vec #{1 2 3})
+(contains? [1 2 3] 3)
+(contains? (set [1 2 3]) 3)
+exit
+(use 'predicates)
+(filter (set->predicate #{1 2 3}) [0 2 4 6])
+quit
+(first (filter even? [1 3 5 7]))
+(first (filter even? [1 3 5 7 8]))
+(filter even? [1 3 5 7 8])
+quit
+(filter first [[false] [1]])
+(first [[false] [1])
+(first [[false] [1]])
+[[false] [1]]
+[false]
+false
+[false]
+[[false]]
+[[false] [1]]
+(filter first [[false] [1]])
+(filter even? [1 3 5 7 8])
+(empty? (filter even? [1 3 5 7 8]))
+(filter first [[false] [1]])
+quit
+(filter first [[false] [1]])
+(first (filter first [[false] [1]]))
+(filter even? [1 3 5 7 8])
+(even? (filter even? [1 3 5 7 8]))
+(apply even? (filter even? [1 3 5 7 8]))
+(apply first (filter first [[false] [1]]))
+quit
+(apply even? (filter even? [1 3 5 7 8]))
+(apply first (filter first [[false] [1]]))
+(apply even? (filter even? [1 3 5 7]))
+(filter even? [1 3 5 7])
+(empty? (filter even? [1 3 5 7]))
+exit
+(use 'predicate)
+(use 'predicates)
+(my-some pos? [1 2 3 4])
+(pos? [1 2 3 4])
+(pos? 1)
+(pos? [1 2])
+(my-some even? [1 3 5 7])
+(my-some pos? [1 3 5 7])
+(my-some even? [1 3 5 7])
+(complement (my-some even? [1 3 5 7]))
+((complement my-some) even? [1 3 5 7])
+((complement my-some) even? [2 4 6])
+(filter even? [2 4 6])
+(filter (complement even?) [2 4 6])
+(filter (complement even?) [2 4 6 7 9])
+(empty? (filter (complement even?) [2 4 6 7 9]))
+quit
+(% 10 5)
+(mod 10 5)
+(mod 5 10)
+(defn prime? [n]
+  (let [pred 
+        (fn [divisor]
+          (= 0 (mod n divisor)))]
+    (not (some pred (range 2 n)))  
+  )
+)
+(prime? 4)
+(prime? 7)
+(prime? 10)
+quit
