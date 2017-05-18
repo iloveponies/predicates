@@ -80,6 +80,11 @@
       (complement pred)
       a-seq)))
 
-(defn prime? [n]
-  :-)
+(defn
+  prime?
+  [n]
+  (let [pred (fn [x]
+               (integer? (/ n x)))]
+    (not
+      (some pred (range 2 n)))))
 ;^^
