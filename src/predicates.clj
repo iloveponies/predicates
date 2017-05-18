@@ -30,11 +30,15 @@
   [pred1 pred2]
   (fn [x] (or (pred1 x) (pred2 x))))
 
-(defn whitespace? [character]
+(defn
+  whitespace?
+  [character]
   (Character/isWhitespace character))
 
-(defn blank? [string]
-  :-)
+(defn
+  blank?
+  [string]
+  (every? whitespace? string))
 
 (defn has-award? [book award]
   :-)
