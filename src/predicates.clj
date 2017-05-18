@@ -40,8 +40,10 @@
   [string]
   (every? whitespace? string))
 
-(defn has-award? [book award]
-  :-)
+(defn
+  has-award?
+  [book award]
+  (boolean (award (:awards book))))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
   :-)
