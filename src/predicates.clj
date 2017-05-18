@@ -20,8 +20,10 @@
   [a-set]
   (fn [x] (contains? a-set x)))
 
-(defn pred-and [pred1 pred2]
-  :-)
+(defn
+  pred-and
+  [pred1 pred2]
+  (fn [x] (and (pred1 x) (pred2 x))))
 
 (defn pred-or [pred1 pred2]
   :-)
