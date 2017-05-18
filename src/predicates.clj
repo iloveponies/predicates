@@ -72,8 +72,13 @@
     (map pred
          (filter pred a-seq))))
 
-(defn my-every? [pred a-seq]
-  :-)
+(defn
+  my-every?
+  [pred a-seq]
+  (empty?
+    (filter
+      (complement pred)
+      a-seq)))
 
 (defn prime? [n]
   :-)
