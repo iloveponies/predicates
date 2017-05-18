@@ -15,8 +15,10 @@
   [n]
   (fn [k] (== k n)))
 
-(defn set->predicate [a-set]
-  :-)
+(defn
+  set->predicate
+  [a-set]
+  (fn [x] (contains? a-set x)))
 
 (defn pred-and [pred1 pred2]
   :-)
