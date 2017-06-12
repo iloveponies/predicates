@@ -45,10 +45,7 @@
       first-non-false)))
 
 (defn my-every? [pred a-seq]
-  (let [first-non-false (first (filter (complement false?) (map pred a-seq)))]
-    (if (nil? first-non-false)
-      false
-      first-non-false)))
+  (empty? (filter (complement pred) a-seq)))
 
 (defn prime? [n]
   (let [pred #(= (mod n %) 0)]
