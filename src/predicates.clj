@@ -88,7 +88,7 @@
   (empty? (filter (complement pred) a-seq)))
 
 
-;; Exercise 11
+;; Ex 11
 ;; Write the function (prime? n) that returns true if n is a prime number and otherwise false.
 
 (defn prime? [n]
