@@ -43,11 +43,18 @@
             awards)))
 
 (defn my-some [pred a-seq]
-  :-)
+    (cond
+      (nil? a-seq) nil
+      (empty? a-seq) nil
+      (pred (first a-seq)) (pred (first a-seq))
+      :else (my-some pred (rest a-seq))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (empty? (filter 
+            (complement pred)
+            a-seq)))
 
 (defn prime? [n]
-  :-)
+  (let [divides? (fn [x] (== 0 (mod n x)))]
+    (not (some divides? (range 2 n)))))
 ;^^
