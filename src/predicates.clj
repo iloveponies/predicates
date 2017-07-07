@@ -40,7 +40,11 @@
        (every? #(contains? (:awards book) %) awards)))
 
 (defn my-some [pred a-seq]
-  (first (filter pred a-seq))
+  (first
+    (remove
+      false? (map pred a-seq)
+    )
+  )
 )
 
 (defn my-every? [pred a-seq]

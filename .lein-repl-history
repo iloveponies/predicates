@@ -309,3 +309,29 @@ my-some
 (my-some nil? [1 nil 2])        ;=> true
 lein midje
 quit
+(true? 1)
+(true?)
+true?
+(true? (odd? 1))
+(true? (odd? 2))
+(use 'predicates)
+(prime? 1)
+(my-some neg? [1 3 5 0 7 -1 8]) ;=> true
+(use 'predicates :reload)
+(my-some neg? [1 3 5 0 7 -1 8]) ;=> true
+(use 'predicates :reload)
+(my-some neg? [1 3 5 0 7 -1 8]) ;=> true
+(my-some first [[false] []])    ;=> falsey
+(my-some neg? [1 3 5 0 7 -1 8]) ;=> true
+(my-some first [[false] [1]])   ;=> 1
+(use 'predicates :reload)
+(my-some first [[false] [1]])   ;=> 1
+(use 'predicates :reload)
+(my-some first [[false] [1]])   ;=> 1
+(my-some neg? [1 3 5 0 7 -1 8]) ;=> true
+(use 'predicates :reload)
+(my-some neg? [1 3 5 0 7 -1 8]) ;=> true
+(my-some first [[false] [1]])   ;=> 1
+(use 'predicates :reload)
+(my-some first [[false] [1]])   ;=> 1
+quit
