@@ -335,3 +335,5 @@ true?
 (use 'predicates :reload)
 (my-some first [[false] [1]])   ;=> 1
 quit
+(use 'predicates)
+quit

@@ -41,11 +41,7 @@
 
 (defn my-some [pred a-seq]
   (first
-    (remove
-      false? (map pred a-seq)
-    )
-  )
-)
+    (remove false? (map pred a-seq))))
 
 (defn my-every? [pred a-seq]
   (empty? (filter (complement pred) a-seq)))
@@ -57,9 +53,7 @@
         (not (some divisible? (range 2 n))))
       false
     ) 
-    false
-  )
-)
+    false))
 
 
 ;^^
