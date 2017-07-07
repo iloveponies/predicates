@@ -40,11 +40,22 @@
        (every? #(contains? (:awards book) %) awards)))
 
 (defn my-some [pred a-seq]
-  :-)
+  (first (filter pred a-seq))
+)
 
 (defn my-every? [pred a-seq]
-  :-)
+  (empty? (filter (complement pred) a-seq)))
 
 (defn prime? [n]
-  :-)
+  (if (and (integer? n) (> n 1))
+    (if (or (odd? n) (= n 2))
+      (let [divisible? (fn [x] (= 0 (mod n x)))]
+        (not (some divisible? (range 2 n))))
+      false
+    ) 
+    false
+  )
+)
+
+
 ;^^
