@@ -33,11 +33,18 @@
   (every? (fn [x] (has-award? book x)) awards))
 
 (defn my-some [pred a-seq]
-  :-)
+  (first (filter identity (map pred a-seq))))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (let [s-count (count a-seq)
+        p-count (count (filter identity (map pred a-seq)))]
+    (== s-count p-count)))
+
+(defn pred-divides [n]
+  (fn [x] (== (mod n x))))
 
 (defn prime? [n]
-  :-)
+  (let [pred (fn [x] (== (mod n x) 0))]
+    (not (some pred (range 2 (+ 1 (Math/floor (Math/sqrt n))))))))
+
 ;^^
