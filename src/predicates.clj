@@ -47,5 +47,7 @@
   (empty? (filter false? (map pred a-seq))))
 
 (defn prime? [n]
-  :-)
+  (let [r (range 2 n)
+        p (map (fn [x] (= (mod n x) 0)) r)]
+    (not (some true? p))))
 ;^^
