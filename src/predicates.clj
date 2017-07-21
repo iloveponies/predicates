@@ -10,7 +10,7 @@
   (fn [k] (== k n)))
 
 (defn set->predicate [a-set]
-  (fn [a-val] (contains? a-set a-val)))
+  (fn [x] (contains? a-set x)))
 
 (defn pred-and [pred1 pred2]
   (fn [x] (or (pred1 x) (pred2 x))))
@@ -27,8 +27,8 @@
 (defn has-award? [book award]
  (contains? (:awards book) award))
 
-(defn HAS-ALL-THE-AWARDS? [book awards]
-  (every? #(has-award? book %) awards))
+(defn has-award? [book award]
+  (contains? (:awards book) award))
 
 (defn my-some [pred a-seq]
   (filter (complement false?) (map pred a-seq)))
