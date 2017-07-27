@@ -43,4 +43,4 @@
   (let [pred (fn [x] (== (mod n x) 0))]
     (not (some pred (range 2 n)))))
 
-;^^
+;^__^
