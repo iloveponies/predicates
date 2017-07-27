@@ -47,4 +47,4 @@
 (defn prime? [n]
   (let [f1 (fn [x] (mod n x))]
     (if(== (count (filter (equal-to 0) (map f1 (range 2 n)))) 0) true false)))
-;^^
+;^^^
