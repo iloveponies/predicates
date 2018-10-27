@@ -27,8 +27,11 @@
 (defn has-award? [book award]
   (contains? (:awards book) award))
 
+(defn has-award-pred [book]
+  (fn [award] (has-award? book award)))
+
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (every? (has-award-pred book) awards))
 
 (defn my-some [pred a-seq]
   :-)
