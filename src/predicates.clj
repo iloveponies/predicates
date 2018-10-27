@@ -39,7 +39,7 @@
 
 
 (defn my-every? [pred a-seq]
-  :-)
+  (= (filter pred a-seq) a-seq))
 
 (defn prime? [n]
   :-)
