@@ -34,7 +34,9 @@
   (every? (has-award-pred book) awards))
 
 (defn my-some [pred a-seq]
-  :-)
+  (let [matching (filter pred a-seq)]
+    (if (= 0 (count matching)) false (pred (first matching)))))
+
 
 (defn my-every? [pred a-seq]
   :-)
