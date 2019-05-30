@@ -42,7 +42,7 @@
   (first (filter identity (map pred a-seq))))
 
 (defn my-every? [pred a-seq]
-  (empty? (filter (complement pred a-seq))))
+  (empty? (filter (complement pred) a-seq)))
 
 (defn prime? [n]
   (let [pred (fn [x] (= 0 (mod n x)))]
