@@ -28,13 +28,15 @@
   (Character/isWhitespace character))
 
 (defn blank? [string]
-  :-)
+  (or
+    (nil? string)
+    (every? whitespace? string)))
 
 (defn has-award? [book award]
-  :-)
+  (contains? (:awards book) award))
 
 (defn HAS-ALL-THE-AWARDS? [book awards]
-  :-)
+  (every? (fn [a] (has-award? book a)) awards))
 
 (defn my-some [pred a-seq]
   :-)
