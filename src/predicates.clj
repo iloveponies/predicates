@@ -39,10 +39,10 @@
   (every? (fn [a] (has-award? book a)) awards))
 
 (defn my-some [pred a-seq]
-  :-)
+  (first (filter pred a-seq)))
 
 (defn my-every? [pred a-seq]
-  :-)
+  (empty? (filter (complement pred) a-seq)))
 
 (defn prime? [n]
   :-)
