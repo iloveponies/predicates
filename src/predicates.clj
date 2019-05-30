@@ -13,10 +13,16 @@
   (fn [a-key] (contains? a-set a-key)))
 
 (defn pred-and [pred1 pred2]
-  :-)
+  (fn [x]
+    (and
+      (pred1 x)
+      (pred2 x))))
 
 (defn pred-or [pred1 pred2]
-  :-)
+  (fn [x]
+    (or
+      (pred1 x)
+      (pred2 x))))
 
 (defn whitespace? [character]
   (Character/isWhitespace character))
