@@ -1,0 +1,9 @@
+(use 'predicates)
+(my-some even? [1 3 5 7])
+(my-some even? [1 3 5 7 8])
+(my-some even? [])
+reload
+(reload 'predicates)
+(use 'predicates :reload)
+(my-some even? [])
+quit
