@@ -8,3 +8,5 @@
 /checkouts
 /.lein-deps-sum
 /.lein-plugins
+/bin
+/.lein-repl-history
